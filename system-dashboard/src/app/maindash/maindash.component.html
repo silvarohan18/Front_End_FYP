@@ -1,0 +1,84 @@
+<div style="background-color: #4b4b4b;">
+
+
+<div class="d-flex align-items-center justify-content-between" style="margin-left: 1%;">
+  <div class="col-md-auto">
+    <div class="row">
+      <div class="col">
+        <span class="mr-2">
+          <button type="button" class="btn btn-primary btn-sm bg-dark text-light mr-2 btn-outline-light" (click)="onLiveData()">Live Data</button>
+
+        </span>
+      </div>
+      <div class="col">
+        <span [ngClass]="isLiveData ? 'live-indicator-holder' : 'live-indicator-holder-dissabled'">
+          <span class="indicator">
+            <div class="circle blink" aria-hidden="true" style="margin-top: 6px;"></div> Live
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
+  
+
+  <div class="col-md-6 text-center">
+    <div class="row mx-4">
+      <div class="col-md-3 mt-2">
+        <input type="checkbox" id="pmuCheckbox1"  [(ngModel)]="pmu1Checked" (ngModelChange)="onPmuCheckboxChange('pmuCheckbox1')">
+        <label for="pmuCheckbox1" style="color: #A8385D; "><strong>Phase 1</strong></label>
+      </div>
+      <div class="col-md-3 mt-2">
+        <input type="checkbox" id="pmuCheckbox2"  [(ngModel)]="pmu2Checked" (ngModelChange)="onPmuCheckboxChange('pmuCheckbox2')">
+        <label for="pmuCheckbox2" style="color: #7AA3E5;"><strong>Phase 2</strong></label>
+      </div>
+      <div class="col-md-3 mt-2">
+        <input type="checkbox" id="pmuCheckbox3"  [(ngModel)]="pmu3Checked" (ngModelChange)="onPmuCheckboxChange('pmuCheckbox3')">
+        <label for="pmuCheckbox3" style="color: #A27EA8;"><strong>Phase 3</strong></label>
+      </div>
+    
+    </div>
+  </div>
+
+  <div class="col-md-auto">
+    <span class="mr-2">
+      <input type="datetime-local" class="bg-dark text-light btn-outline-light" [(ngModel)]="dateTimeValue" style="background-color: rgb(107, 107, 107) !important;">
+
+
+    </span>
+    <button type="button" class="btn btn-primary btn-sm bg-dark text-light mr-2 btn-outline-light" (click)="onShowData()">Show Data</button>
+  </div>
+</div>
+
+<div style="display: flex; flex-direction: column; height: 100vh;">
+  <table style="margin: 0; table-layout: fixed; width: 100%; flex: 1; background-color: #333; color: white; border: 0px solid #333;">
+    <thead style="position: sticky; top: 0; background-color: #222;">
+      <tr>
+        <th style="background-color: #222; color: white;">Timestamp</th>
+        <th style="background-color: #222; color: white;">Voltage</th>
+        <th style="background-color: #222; color: white;">Current</th>
+        <th style="background-color: #222; color: white;">Frequency</th>
+        <th style="background-color: #222; color: white;">ROCOF</th>
+        <th style="background-color: #222; color: white;">GPS (Lat)</th>
+        <th style="background-color: #222; color: white;">GPS (Lon)</th>
+      </tr>
+    </thead>
+    <tbody style="overflow-y: auto;">
+      <tr *ngFor="let data of tableData" style="border-bottom: 1px solid rgb(89, 89, 89); color: #D3D3D3;">
+        <td >{{ data.timestamp }}</td>
+        <td>{{ data.voltage }}</td>
+        <td>{{ data.current }}</td>
+        <td>{{ data.frequency }}</td>
+        <td>{{ data.rocof }}</td>
+        <td>{{ data.gps.lat }}</td>
+        <td>{{ data.gps.lon }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+
+
+
+
+</div>

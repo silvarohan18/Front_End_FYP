@@ -1,0 +1,78 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+  }
+
+
+
+.circle {
+  width: 10px;
+  height: 10px;
+  background: white;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.live-indicator-holder-dissabled {
+    font-family: sans-serif;
+    background: #5f5c5c;
+    color: #FFF;
+    padding: 4px 10px;
+    border-radius: 6px;
+    text-transform: uppercase;
+    font-weight: bold;
+    display: flex;
+  }
+
+.live-indicator-holder {
+    position: relative;
+    
+  }
+  .live-indicator-holder .indicator {
+    font-family: sans-serif;
+    background: #ea2429;
+    color: #FFF;
+    padding: 4px 10px;
+    border-radius: 6px;
+    text-transform: uppercase;
+    font-weight: bold;
+    display: flex;
+  }
+
+  
+
+  .live-indicator-holder .indicator .blink {
+    animation: blinker 0.5s cubic-bezier(0.5, 0, 1, 1) infinite alternate;
+  }
+  @keyframes blinker {
+    from {
+      opacity: 0.9;
+    }
+  to {
+      opacity: 0.1;
+    }
+  }
+
+  table {
+    border-collapse: collapse;
+  }
+  table, th, td {
+    border: none !important;
+  }
+
+  tr:nth-child(even) {
+    background-color: #303030; /* Replace with your desired shade of green */
+  }
+
+ 

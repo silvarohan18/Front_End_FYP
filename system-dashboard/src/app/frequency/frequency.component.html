@@ -1,0 +1,59 @@
+<div style="background-color:  rgb(75, 75, 75); width: 100vw; max-width: 100%;">
+  <div class="row align-items-center" style="justify-content: center;">
+    <div class="col-md-1 mt-2">
+      <input type="checkbox" id="pmuCheckbox1" [(ngModel)]="pmu1Checked"
+        (ngModelChange)="onPmuCheckboxChange('pmuCheckbox1')">
+        <label for="pmuCheckbox1" style="color: #A8385D; "><strong>PMU 1</strong></label>
+
+    </div>
+    <div class="col-md-1 mt-2">
+      <input type="checkbox" id="pmuCheckbox2" [(ngModel)]="pmu2Checked"
+        (ngModelChange)="onPmuCheckboxChange('pmuCheckbox2')">
+        <label for="pmuCheckbox2" style="color: #7AA3E5;"><strong>PMU 2</strong></label>
+
+    </div>
+    <div class="col-md-1 mt-2">
+      <input type="checkbox" id="pmuCheckbox3" [(ngModel)]="pmu3Checked"
+        (ngModelChange)="onPmuCheckboxChange('pmuCheckbox3')">
+        <label for="pmuCheckbox3" style="color: #A27EA8;"><strong>PMU 3</strong></label>
+      
+    </div>
+    <div class="col-md-1 mt-2">
+      <input type="checkbox" id="pmuCheckbox4" [(ngModel)]="pmu4Checked"
+        (ngModelChange)="onPmuCheckboxChange('pmuCheckbox4')">
+        <label for="pmuCheckbox4" style="color: #AAE3F5;"><strong>PMU 4</strong></label>
+    </div>
+  </div>
+
+  <span [ngClass]="isLiveData ? 'live-indicator-holder' : 'live-indicator-holder-dissabled'">
+    <span class="indicator">
+      <div class="circle blink" aria-hidden="true" style="margin-top: 6px;"></div> Live
+    </span>
+  </span>
+
+  
+ <div style="height: 100vh;">
+  
+  <div style="background-color: rgb(233, 233, 233); margin-top: 1%;">
+    <ngx-charts-line-chart [animations]="animations" [view]="view" [legend]="legend" [showXAxisLabel]="showXAxisLabel"
+      [showYAxisLabel]="showYAxisLabel" [xAxis]="xAxis" [yAxis]="yAxis" [xAxisLabel]="xAxisLabel"
+      [yAxisLabel]="yAxisLabel" [timeline]="timeline" [results]="multi"  [autoScale] ="true"></ngx-charts-line-chart>
+
+  </div>
+
+  <div style="background-color: rgb(233, 233, 233); margin-top: 1%;">
+    <ngx-charts-line-chart [animations]="animations" [view]="view" [legend]="legend" [showXAxisLabel]="showXAxisLabel"
+      [showYAxisLabel]="showYAxisLabel" [xAxis]="xAxis" [yAxis]="yAxis" [xAxisLabel]="xAxisLabel"
+      [yAxisLabel]="yAxisLabel" [timeline]="timeline" [results]="multi_ph2"  [autoScale] ="true"></ngx-charts-line-chart>
+
+  </div>
+
+  <div style="background-color: rgb(233, 233, 233); margin-top: 1%;">
+    <ngx-charts-line-chart [animations]="animations" [view]="view" [legend]="legend" [showXAxisLabel]="showXAxisLabel"
+      [showYAxisLabel]="showYAxisLabel" [xAxis]="xAxis" [yAxis]="yAxis" [xAxisLabel]="xAxisLabel"
+      [yAxisLabel]="yAxisLabel" [timeline]="timeline" [results]="multi_ph3"  [autoScale] ="true"></ngx-charts-line-chart>
+
+  </div>
+  
+
+</div>
