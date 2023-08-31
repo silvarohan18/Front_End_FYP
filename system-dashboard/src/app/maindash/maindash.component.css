@@ -13,6 +13,23 @@ table {
     background-color: #f2f2f2;
   }
 
+.dashboards {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.dashboard {
+  border: 2px solid #a59393;
+  padding: 50px;
+  text-align: center;
+}
+
+.dashboard-value {
+  font-size: 30px;
+  font-weight: bold;
+  color: #ddd5d5;
+}
 
 
 .circle {

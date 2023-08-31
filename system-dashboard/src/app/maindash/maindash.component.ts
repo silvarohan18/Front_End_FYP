@@ -12,7 +12,6 @@ export class MaindashComponent implements OnInit{
 
   dateTimeValue: string;
 
-  //selected pmu data
   pmu1Checked=true
   pmu2Checked=false
   pmu3Checked=false

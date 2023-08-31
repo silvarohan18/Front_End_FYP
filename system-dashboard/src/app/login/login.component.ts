@@ -19,8 +19,6 @@ export class LoginComponent implements OnInit {
    }
   }
 
-
-
   loginUser(){
     if(this._auth.loginUser()){
      this._router.navigate(['/home/main'])

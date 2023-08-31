@@ -139,7 +139,6 @@ customColors = (value: any) => {
   }
 
 
-
   onPause() {
     clearInterval(this.intervalId);
     this.isLiveData = false;
