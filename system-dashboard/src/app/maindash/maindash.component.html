@@ -2,25 +2,23 @@
 
   <div class="background-overlay">
     <div class="dashboards">
-      
       <div class="dashboard">
-         <h3>Voltage Dashboard</h3>
-         <div class="dashboard-value" id="voltage-value">0 V</div>
-         
-       </div>
-      
-       <div class="dashboard">
-         <h3>Current Dashboard</h3>
-         <div class="dashboard-value" id="current-value">0 A</div>
-      
-        </div>
-      
-        <div class="dashboard">
-         <h3>Frequency Dashboard</h3>
-         <div class="dashboard-value" id="frequency-value">0 Hz</div>
-       </div>
-     </div>
-   </div>
+        <h3 style="color: #D3D3D3;">Voltage</h3>
+        <div class="dashboard-value stylish-value" id="voltage-value">{{topValues.voltage}}</div>
+      </div>
+  
+      <div class="dashboard">
+        <h3 style="color: #D3D3D3;">Current</h3>
+        <div class="dashboard-value stylish-value" id="current-value">0 A</div>
+      </div>
+  
+      <div class="dashboard">
+        <h3 style="color: #D3D3D3;">Frequency</h3>
+        <div class="dashboard-value stylish-value" id="frequency-value">{{topValues.frequency}}</div>
+      </div>
+    </div>
+  </div>
+  
  
 
 

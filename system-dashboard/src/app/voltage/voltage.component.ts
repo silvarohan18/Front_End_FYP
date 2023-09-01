@@ -15,11 +15,12 @@ export class VoltageComponent implements OnInit {
       const part = message.split(',');
       if (part[0] === 'v') {
         const timeString = part[5];
-        //const timeFormatted = moment(timeString).format('HH:mm:ss')
+   
         const d:Date = this.setTime(timeString);
         const timeFormatted = new Date(d);
         const ms = timeFormatted.getSeconds();
         console.log(timeString)
+        
         this.seconds += d.getMilliseconds();
         this.updateGraph(parseFloat(part[1]),this.seconds);
         this.updateGraph_ph2(parseFloat(part[2]),this.seconds);

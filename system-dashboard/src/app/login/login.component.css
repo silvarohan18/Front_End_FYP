@@ -1,18 +1,18 @@
-/* Reset default form styles */
 form {
     margin: 0;
     padding: 0;
   }
   
   .container {
-    max-width: 400px;
+    max-width: 500px;
     margin: 0 auto;
     padding: 20px;
   }
   
   h2 {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    text-decoration-color: black;
   }
   
   .form-group {
@@ -22,6 +22,8 @@ form {
   label {
     display: block;
     margin-bottom: 5px;
+    color: black;
+    font-size: 16px;
   }
   
   input[type="email"],
@@ -39,8 +41,8 @@ form {
     padding: 10px;
     font-size: 16px;
     background-color: #4CAF50;
-    color: white;
-    border: none;
+    color: rgb(0, 0, 0);
+    border: 2px;
     border-radius: 5px;
     cursor: pointer;
   }

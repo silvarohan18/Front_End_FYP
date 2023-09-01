@@ -93,3 +93,36 @@ table {
   }
 
  
+  /* Add some padding to the background overlay */
+.background-overlay {
+  padding: 20px;
+}
+
+/* Create a row layout for dashboards with a 5px gap between them */
+.dashboards {
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
+}
+
+.dashboard {
+  flex: 1; /* Equal width for each dashboard */
+  text-align: center;
+  padding: 20px;
+  background-color: #333; /* Dark background color */
+  border-radius: 10px; /* Rounded corners */
+}
+
+/* Style the dashboard values */
+.stylish-value {
+  font-size: 24px; /* Increase font size */
+  color: #FFD700; /* Gold color */
+  font-weight: bold; /* Bold text */
+}
+
+/* Style the h3 headers */
+.dashboard h3 {
+  font-size: 18px; /* Increase font size */
+  color: #FFFFFF; /* White color */
+  margin-bottom: 10px; /* Add some spacing between the header and value */
+}

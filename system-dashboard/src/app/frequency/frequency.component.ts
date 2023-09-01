@@ -152,9 +152,6 @@ customColors = (value: any) => {
     }
   ];
 
-
-
-
   intervalId: any;
   seconds_ph1 = 0
   seconds_ph2 = 0
