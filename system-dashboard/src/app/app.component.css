@@ -1,0 +1,13 @@
+
+.footer {
+    width: 100%;
+    padding: 20px;
+    background-color: rgb(0, 0, 0);  /* Dark background */
+    color: #fff;  /* White text */
+    }
+    
+    .footer p {
+    margin: 0;  /* Removing default margin */
+    text-align: center;  /* Centering the text */
+    font-size: 16px;
+    }
