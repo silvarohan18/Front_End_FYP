@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GpsComponent } from './gps.component';
+import {PhaseComponent } from './phase.component';
 
-describe('GpsComponent', () => {
-  let component: GpsComponent;
-  let fixture: ComponentFixture<GpsComponent>;
+describe('PhaseComponent', () => {
+  let component: PhaseComponent;
+  let fixture: ComponentFixture<PhaseComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [GpsComponent]
+      declarations: [PhaseComponent]
     });
-    fixture = TestBed.createComponent(GpsComponent);
+    fixture = TestBed.createComponent(PhaseComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -5,7 +5,7 @@ import { VoltageComponent } from './voltage/voltage.component';
 import { CurrentComponent } from './current/current.component';
 import { FrequencyComponent } from './frequency/frequency.component';
 import { RocofComponent } from './rocof/rocof.component';
-import { GpsComponent } from './gps/gps.component';
+import { PhaseComponent } from './phase/phase.component';
 import { AuthenticatedComponent } from './authenticated/authenticated.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard, CanDeactivateGuard } from './auth.guard';
@@ -22,7 +22,7 @@ const routes: Routes = [
     {path:"current",component:CurrentComponent},
     {path:"frequency",component:FrequencyComponent},
     {path:"rocof",component:RocofComponent},
-    {path:"gps",component:GpsComponent}
+    {path:"phase",component:PhaseComponent}
    ]
    
   },

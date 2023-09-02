@@ -1,0 +1,112 @@
+::ng-deep .ngx-charts-x-axis-label,
+::ng-deep .ngx-charts-y-axis-label {
+  fill: #fff; /* Set the label text color to white */
+}
+
+
+
+.circle {
+    width: 10px;
+    height: 10px;
+    background: white;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 5px;
+  }
+  
+  .live-indicator-holder-dissabled {
+      font-family: sans-serif;
+      background: #5f5c5c;
+      color: #FFF;
+      padding: 4px 10px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      font-weight: bold;
+      display: flex;
+      width: 80px;
+      margin-left: 1%;
+    }
+  
+  .live-indicator-holder {
+      position: relative;
+      
+    }
+    .live-indicator-holder .indicator {
+      font-family: sans-serif;
+      background: #ea2429;
+      color: #FFF;
+      padding: 4px 10px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      font-weight: bold;
+      display: flex;
+      width: 80px;
+      margin-left: 1%;
+
+    }
+  
+    
+  
+    .live-indicator-holder .indicator .blink {
+      animation: blinker 0.5s cubic-bezier(0.5, 0, 1, 1) infinite alternate;
+    }
+    @keyframes blinker {
+      from {
+        opacity: 0.9;
+      }
+    to {
+        opacity: 0.1;
+      }
+    }
+  
+
+    /* chart style*/
+    .dark-chart {
+      background-color: #222;
+    }
+    
+    .dark-chart text {
+      fill: #fff;
+    }
+    
+    .dark-chart .axis-labels text {
+      fill: #ccc;
+    }
+    
+    .dark-chart .tooltip-box {
+      background-color: #000;
+      color: #fff;
+    }
+    
+    .dark-chart .gridline path {
+      stroke: #555;
+    }
+    
+    .dark-chart .gridline line {
+      stroke: #777;
+    }
+    
+    .dark-chart .domain {
+      stroke: #777;
+    }
+    
+    .dark-chart .legend text {
+      fill: #ccc;
+    }
+    
+    .dark-chart .legend-titles text {
+      fill: #fff;
+    }
+    
+    .dark-chart .tooltip-circle {
+      stroke: #555;
+    }
+    
+    .dark-chart .tooltip-line {
+      stroke: #555;
+    }
+    
+    .dark-chart .tooltip-text {
+      fill: #fff;
+    }
+    

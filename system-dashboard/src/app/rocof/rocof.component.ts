@@ -1,11 +1,43 @@
 import { Component, OnInit } from '@angular/core';
+import { Color } from '@swimlane/ngx-charts';
+import { WebsocketService } from '../websocket.service';
+
 
 @Component({
   selector: 'app-rocof',
   templateUrl: './rocof.component.html',
   styleUrls: ['./rocof.component.css']
 })
-export class RocofComponent implements OnInit{
+export class RocofComponent implements OnInit {
+
+  constructor(private websocketService: WebsocketService) {
+    this.websocketService.messages.subscribe((message: string) => {
+      const part = message.split(',');
+      if (part[0] === 'R') {
+        const timeString = part[5];
+   
+        const d:Date = this.setTime(timeString);
+        const timeFormatted = new Date(d);
+        const ms = timeFormatted.getSeconds();
+        console.log(timeString)
+        
+        this.seconds += d.getMilliseconds();
+        this.updateGraph(parseFloat(part[1]),this.seconds);
+        this.updateGraph_ph2(parseFloat(part[2]),this.seconds);
+        this.updateGraph_ph3(parseFloat(part[3]),this.seconds);
+
+      }
+
+    });
+  }
+
+  ngOnInit(): void {
+    this.websocketService.messages.subscribe((message: string) => {
+    });
+
+  //  this.startInterval();
+  }
+
   isLiveData = true
 
   pmu1Checked: boolean = true;
@@ -16,7 +48,7 @@ export class RocofComponent implements OnInit{
   onPmuCheckboxChange(checkboxId: string) {
     switch (checkboxId) {
       case 'pmuCheckbox1':
-        console.log('PMU 1 checked:', this.pmu1Checked);
+        console.log('PMU 1 hashkajsa:', this.pmu1Checked);
         // Perform additional actions for PMU 1
         break;
       case 'pmuCheckbox2':
@@ -41,14 +73,15 @@ export class RocofComponent implements OnInit{
 // chart options
 legend: boolean = true;
 showLabels: boolean = true;
-animations: boolean = false;
+animations: boolean = true;
 xAxis: boolean = true;
 yAxis: boolean = true;
 showYAxisLabel: boolean = true;
 showXAxisLabel: boolean = true;
-xAxisLabel: string = 'Time';
+xAxisLabel: string = 'TIME';
 yAxisLabel: string = 'ROCOF';
-timeline: boolean = true;
+timeline: boolean = false;
+autoScale: boolean = true;
 
 colorScheme = {
   domain: ['#5AA454', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5']
@@ -61,7 +94,7 @@ customColors = (value: any) => {
 
   multi = [
     {
-      name: 'PMU 1',
+      name: 'Phase 1',
       series: [
         {
           name: 0,
@@ -73,67 +106,93 @@ customColors = (value: any) => {
         }
       ]
     },
+  ];
+
+  multi_ph2 = [
     {
-      name: 'PMU 2',
+      name: 'Phase 2',
       series: [
         {
           name: 0,
-          value: 2
+          value: 1
         },
         {
           name: 1,
-          value: 1
+          value: 2
         }
       ]
-    }
-
+    },
   ];
+
+  multi_ph3 = [
+    {
+      name: 'Phase 3',
+      series: [
+        {
+          name: 0,
+          value: 1
+        },
+        {
+          name: 1,
+          value: 2
+        }
+      ]
+    },
+  ];
+
 
 
   intervalId: any;
   seconds = 0
   time = 50
 
-  ngOnInit(): void {
-    this.startInterval()
-  }
+  updateGraph(val:number,seconds:number){
 
-  // Function to start the interval
-  startInterval() {
-    this.intervalId = setInterval(() => {
-      this.updateSeconds();
-    }, this.time);
-  }
-
-  updateSeconds(): void {
-
-    this.seconds = this.seconds + 1
-    this.updateMultiArray(this.seconds);
-  }
-
-  updateMultiArray(seconds: number): void {
     const newSeries = {
       name: seconds,
-      value: Math.random() * 4 - 2
+      value: val
     };
 
-    const newSeries2 = {
-      name: seconds,
-      value: Math.random() * 4 - 2
-    };
-    // Create a new array with the updated series and assign it to the 'multi' property
     this.multi = [...this.multi];
     this.multi[0].series.push(newSeries);
-    this.multi[1].series.push(newSeries2);
 
     if (this.multi[0].series.length > 200) {
       this.multi[0].series.shift()
-    }
-    if (this.multi[1].series.length > 200) {
-      this.multi[1].series.shift()
+      //this.seconds = 0;
     }
   }
 
+  updateGraph_ph2(val:number,seconds:number){
+
+    const newSeries = {
+      name: seconds,
+      value: val
+    };
+
+    this.multi_ph2 = [...this.multi_ph2];
+    this.multi_ph2[0].series.push(newSeries);
+
+    if (this.multi_ph2[0].series.length > 200) {
+      this.multi_ph2[0].series.shift()
+      //this.seconds = 0;
+    }
+  }
+
+  updateGraph_ph3(val:number,seconds:number){
+
+    const newSeries = {
+      name: seconds,
+      value: val
+    };
+
+    this.multi_ph3 = [...this.multi_ph3];
+    this.multi_ph3[0].series.push(newSeries);
+
+    if (this.multi_ph3[0].series.length > 200) {
+      this.multi_ph3[0].series.shift()
+      //this.seconds = 0;
+    }
+  }
 
 
   onPause() {
@@ -143,12 +202,26 @@ customColors = (value: any) => {
   }
 
   onResume() {
-    this.startInterval();
+    // this.startInterval();
   }
 
   onLive() {
     this.isLiveData = true
-    this.startInterval();
+    // this.startInterval();
+  }
+
+  setTime(time:string):Date{
+    const[h,m,sANDm] = time.split(":");
+    const[s,ms] = sANDm.split(".");
+
+    const newtime =  new Date();
+
+    newtime.setHours(Number(h));
+    newtime.setMinutes(Number(m));
+    newtime.setSeconds(Number(s));
+    newtime.setMilliseconds(Number(ms));
+
+    return newtime;
   }
 
 }

@@ -76,6 +76,7 @@
       <tr>
         <th style="background-color: #222; color: white;">Timestamp</th>
         <th style="background-color: #222; color: white;">Voltage</th>
+        <th style="background-color: #222; color: white;">Phase</th>
         <th style="background-color: #222; color: white;">Current</th>
         <th style="background-color: #222; color: white;">Frequency</th>
         <th style="background-color: #222; color: white;">ROCOF</th>
@@ -87,6 +88,7 @@
       <tr *ngFor="let data of tableData" style="border-bottom: 1px solid rgb(89, 89, 89); color: #D3D3D3;">
         <td >{{ data.timestamp }}</td>
         <td>{{ data.voltage }}</td>
+        <td>{{ data.phase }}</td>
         <td>{{ data.current }}</td>
         <td>{{ data.frequency }}</td>
         <td>{{ data.rocof }}</td>

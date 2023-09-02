@@ -2,18 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { Color } from '@swimlane/ngx-charts';
 import { WebsocketService } from '../websocket.service';
 
-
 @Component({
-  selector: 'app-voltage',
-  templateUrl: './voltage.component.html',
-  styleUrls: ['./voltage.component.css']
+  selector: 'app-phase',
+  templateUrl: './phase.component.html',
+  styleUrls: ['./phase.component.css']
 })
-export class VoltageComponent implements OnInit {
+
+export class PhaseComponent implements OnInit {
 
   constructor(private websocketService: WebsocketService) {
     this.websocketService.messages.subscribe((message: string) => {
       const part = message.split(',');
-      if (part[0] === 'v') {
+      if (part[0] === 'C') {
         const timeString = part[5];
    
         const d:Date = this.setTime(timeString);
@@ -22,6 +22,7 @@ export class VoltageComponent implements OnInit {
         console.log(timeString)
         
         this.seconds += d.getMilliseconds();
+        
         this.updateGraph(parseFloat(part[1]),this.seconds);
         this.updateGraph_ph2(parseFloat(part[2]),this.seconds);
         this.updateGraph_ph3(parseFloat(part[3]),this.seconds);
@@ -48,7 +49,7 @@ export class VoltageComponent implements OnInit {
   onPmuCheckboxChange(checkboxId: string) {
     switch (checkboxId) {
       case 'pmuCheckbox1':
-        console.log('PMU 1 hashkajsa:', this.pmu1Checked);
+        console.log('PMU 1:', this.pmu1Checked);
         // Perform additional actions for PMU 1
         break;
       case 'pmuCheckbox2':
@@ -79,7 +80,7 @@ yAxis: boolean = true;
 showYAxisLabel: boolean = true;
 showXAxisLabel: boolean = true;
 xAxisLabel: string = 'TIME';
-yAxisLabel: string = 'VOLTAGE';
+yAxisLabel: string = 'PHASE';
 timeline: boolean = false;
 autoScale: boolean = true;
 
@@ -201,13 +202,13 @@ customColors = (value: any) => {
 
   }
 
-  onResume() {
-    // this.startInterval();
+  onResume() 
+  {
   }
 
   onLive() {
     this.isLiveData = true
-    // this.startInterval();
+    
   }
 
   setTime(time:string):Date{

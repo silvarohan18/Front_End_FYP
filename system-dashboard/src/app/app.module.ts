@@ -9,7 +9,7 @@ import { CurrentComponent } from './current/current.component';
 import { MaindashComponent } from './maindash/maindash.component';
 import { FrequencyComponent } from './frequency/frequency.component';
 import { RocofComponent } from './rocof/rocof.component';
-import { GpsComponent } from './gps/gps.component';
+import { PhaseComponent } from './phase/phase.component';
 import { AuthenticatedComponent } from './authenticated/authenticated.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
@@ -26,11 +26,11 @@ import { HomeComponent } from './home/home.component';
   declarations: [
     AppComponent,
     VoltageComponent,
+    PhaseComponent,
     CurrentComponent,
     MaindashComponent,
     FrequencyComponent,
     RocofComponent,
-    GpsComponent,
     AuthenticatedComponent,
     LoginComponent,
     HomeComponent
