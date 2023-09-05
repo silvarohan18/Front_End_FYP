@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
   providedIn: 'root',
 })
 export class WebsocketService {
-  private socket!: WebSocket; // Add the ! operator here
+  private socket!: WebSocket; 
   public messages: Subject<string> = new Subject<string>();
 
   constructor() {

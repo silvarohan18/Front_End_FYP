@@ -115,11 +115,11 @@ customColors = (value: any) => {
       name: 'Phase 2',
       series: [
         {
-          name: 0,
+          name: this.convertUTCTimeToHHMMSS(0),
           value: 1
         },
         {
-          name: 1,
+          name: this.convertUTCTimeToHHMMSS(0),
           value: 2
         }
       ]
@@ -131,11 +131,11 @@ customColors = (value: any) => {
       name: 'Phase 3',
       series: [
         {
-          name: 0,
+          name: this.convertUTCTimeToHHMMSS(0),
           value: 1
         },
         {
-          name: 1,
+          name: this.convertUTCTimeToHHMMSS(0),
           value: 2
         }
       ]
@@ -164,9 +164,8 @@ customColors = (value: any) => {
 
 
   updateGraph_ph2(val:number,seconds:number){
-
     const newSeries = {
-      name: seconds,
+      name: this.convertUTCTimeToHHMMSS(seconds), // Use the formatTime function to get HH:mm
       value: val
     };
 
@@ -180,12 +179,10 @@ customColors = (value: any) => {
   }
 
   updateGraph_ph3(val:number,seconds:number){
-
     const newSeries = {
-      name: seconds,
+      name: this.convertUTCTimeToHHMMSS(seconds), // Use the formatTime function to get HH:mm
       value: val
     };
-
     this.multi_ph3 = [...this.multi_ph3];
     this.multi_ph3[0].series.push(newSeries);
 
