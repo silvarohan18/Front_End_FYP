@@ -354,6 +354,8 @@ export class DataService implements OnInit {
     );
   }
   
+
+
   getAllData(){
     return this.tableData
   }
