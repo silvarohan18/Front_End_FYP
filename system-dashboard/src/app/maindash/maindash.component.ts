@@ -9,14 +9,11 @@ import { WebsocketService } from '../websocket.service';
   styleUrls: ['./maindash.component.css']
 })
 export class MaindashComponent implements OnInit{
-
-
   dateTimeValue: string;
 
   pmu1Checked=true
   pmu2Checked=false
   pmu3Checked=false
-
 
   public isLiveData=true
   tableData:any;
@@ -28,7 +25,6 @@ export class MaindashComponent implements OnInit{
     const adjustedDate = new Date(currentDate.getTime() - timeZoneOffset);
     this.dateTimeValue = adjustedDate.toISOString().slice(0, 16);
 
-
     //top volatage
     this.websocketService.messages.subscribe((message: string) => {
       const part = message.split(',');
@@ -39,8 +35,6 @@ export class MaindashComponent implements OnInit{
       if(part[0]==='f2'){
         this.topValues.frequency=parseFloat(part[1]);
       }
-      
-
     });
   }
 
