@@ -308,11 +308,18 @@ export class DataService implements OnInit {
 
     var voltage=0;
     var frequency=0;
+    var current=0;
+
     if (part[0] === 'v') {
       //this.topValues.voltage=parseFloat(part[1]);
       voltage=parseFloat(part[1]);
        
     }
+
+    if(part[0]==='c'){
+      // this.topValues.frequency=parseFloat(part[1]);
+      current=parseFloat(part[1]);
+     }
 
     if(part[0]==='f2'){
      // this.topValues.frequency=parseFloat(part[1]);

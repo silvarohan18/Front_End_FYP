@@ -28,11 +28,18 @@ export class MaindashComponent implements OnInit{
     //top volatage
     this.websocketService.messages.subscribe((message: string) => {
       const part = message.split(',');
-      if (part[0] === 'v') {
+
+      if (part[0] === 'v') 
+      {
         this.topValues.voltage=parseFloat(part[1]);
       }
 
-      if(part[0]==='f2'){
+      else if(part[0]==='c')
+      {
+        this.topValues.current=parseFloat(part[1]);
+      }
+
+      else if(part[0]==='f2'){
         this.topValues.frequency=parseFloat(part[1]);
       }
     });
