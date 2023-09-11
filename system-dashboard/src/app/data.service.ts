@@ -154,6 +154,7 @@ export class DataService implements OnInit {
     {
       timestamp: '2023-06-25 10:00:00',
       voltage: 120,
+      phase : 20,
       current: 5,
       frequency: 60,
       rocof: 0.1,
@@ -162,6 +163,7 @@ export class DataService implements OnInit {
     {
       timestamp: '2023-06-25 10:00:00',
       voltage: 120,
+      phase : 20,
       current: 5,
       frequency: 60,
       rocof: 0.1,
@@ -170,6 +172,7 @@ export class DataService implements OnInit {
     {
       timestamp: '2023-06-25 10:00:00',
       voltage: 120,
+      phase : 20,
       current: 5,
       frequency: 60,
       rocof: 0.1,
@@ -178,6 +181,7 @@ export class DataService implements OnInit {
     {
       timestamp: '2023-06-25 10:00:00',
       voltage: 120,
+      phase : 20,
       current: 5,
       frequency: 60,
       rocof: 0.1,
@@ -186,6 +190,7 @@ export class DataService implements OnInit {
     {
       timestamp: '2023-06-25 10:00:01',
       voltage: 120,
+      phase : 20,
       current: 5,
       frequency: 60,
       rocof: 0.1,
@@ -194,6 +199,7 @@ export class DataService implements OnInit {
     {
       timestamp: '2023-06-25 10:00:01',
       voltage: 120,
+      phase : 20,
       current: 5,
       frequency: 60,
       rocof: 0.1,
@@ -202,6 +208,7 @@ export class DataService implements OnInit {
     {
       timestamp: '2023-06-25 10:00:01',
       voltage: 120,
+      phase : 20,
       current: 5,
       frequency: 60,
       rocof: 0.1,
@@ -210,6 +217,7 @@ export class DataService implements OnInit {
     {
       timestamp: '2023-06-25 10:00:01',
       voltage: 120,
+      phase : 20,
       current: 5,
       frequency: 60,
       rocof: 0.1,
@@ -218,6 +226,7 @@ export class DataService implements OnInit {
     {
       timestamp: '2023-06-25 10:00:01',
       voltage: 120,
+      phase : 20,
       current: 5,
       frequency: 60,
       rocof: 0.1,
@@ -226,6 +235,7 @@ export class DataService implements OnInit {
     {
       timestamp: '2023-06-25 10:00:01',
       voltage: 120,
+      phase : 20,
       current: 5,
       frequency: 60,
       rocof: 0.1,
@@ -234,6 +244,7 @@ export class DataService implements OnInit {
     {
       timestamp: '2023-06-25 10:00:01',
       voltage: 120,
+      phase : 20,
       current: 5,
       frequency: 60,
       rocof: 0.1,
@@ -242,6 +253,7 @@ export class DataService implements OnInit {
     {
       timestamp: '2023-06-25 10:00:01',
       voltage: 120,
+      phase : 20,
       current: 5,
       frequency: 60,
       rocof: 0.1,
@@ -250,6 +262,7 @@ export class DataService implements OnInit {
     {
       timestamp: '2023-06-25 10:00:01',
       voltage: 120,
+      phase : 20,
       current: 5,
       frequency: 60,
       rocof: 0.1,
@@ -258,6 +271,7 @@ export class DataService implements OnInit {
     {
       timestamp: '2023-06-25 10:00:01',
       voltage: 120,
+      phase : 20,
       current: 5,
       frequency: 60,
       rocof: 0.1,
@@ -266,6 +280,7 @@ export class DataService implements OnInit {
     {
       timestamp: '2023-06-25 10:00:01',
       voltage: 120,
+      phase : 20,
       current: 5,
       frequency: 60,
       rocof: 0.1,
@@ -274,6 +289,7 @@ export class DataService implements OnInit {
     {
       timestamp: '2023-06-25 10:00:01',
       voltage: 120,
+      phase : 20,
       current: 5,
       frequency: 60,
       rocof: 0.1,
@@ -309,6 +325,7 @@ export class DataService implements OnInit {
     var voltage=0;
     var frequency=0;
     var current=0;
+    var phase = 0;
 
     if (part[0] === 'v') {
       //this.topValues.voltage=parseFloat(part[1]);

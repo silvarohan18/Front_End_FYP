@@ -46,10 +46,9 @@ export class MaindashComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    
-    this.tableData=this._data.getLiveData()
-    
    
+    this.tableData=this._data.getLiveData()
+  
   }
 
   onPmuCheckboxChange(checkboxId: string) {

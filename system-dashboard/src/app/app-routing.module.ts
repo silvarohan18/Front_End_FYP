@@ -19,10 +19,11 @@ const routes: Routes = [
    children:[
     {path:"main",component:MaindashComponent},
     {path:"voltage",component:VoltageComponent},
+    {path:"phase",component:PhaseComponent},
     {path:"current",component:CurrentComponent},
     {path:"frequency",component:FrequencyComponent},
     {path:"rocof",component:RocofComponent},
-    {path:"phase",component:PhaseComponent}
+    
    ]
    
   },
