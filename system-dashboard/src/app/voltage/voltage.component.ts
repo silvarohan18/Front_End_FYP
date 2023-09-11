@@ -8,6 +8,7 @@ import { WebsocketService } from '../websocket.service';
   templateUrl: './voltage.component.html',
   styleUrls: ['./voltage.component.css']
 })
+
 export class VoltageComponent implements OnInit {
 
   constructor(private websocketService: WebsocketService) {
@@ -16,26 +17,15 @@ export class VoltageComponent implements OnInit {
       //console.log(part[0])
       if (part[0] === 'v') {
         const timeString = parseFloat(part[2]);
-        // const d:Date = this.setTime(timeString);
-        // const timeFormatted = new Date(d);
-        // const ms = timeFormatted.getSeconds();
-        //console.log(this.convertUTCTimeToHHMMSSMilli(timeString))
-        //this.seconds += (parseFloat((this.convertUTCTimeToHHMMSSMilli(timeString))))/1000;
         this.updateGraph(parseFloat(part[1]),timeString);
-        // this.updateGraph_ph2(parseFloat(part[2]),this.seconds);
-        // this.updateGraph_ph3(parseFloat(part[3]),this.seconds);
-      }
+    }
     }
     );
 
   }
 
   ngOnInit(): void {
-    // this.websocketService.messages.subscribe((message: string) => {
-    // });
-    //this.seconds += 1;
-    //this.updateGraph(230,this.seconds)
-  //  this.startInterval();
+    
   }
 
 
@@ -59,11 +49,11 @@ export class VoltageComponent implements OnInit {
         break;
       case 'pmuCheckbox3':
         console.log('PMU 3 checked:', this.pmu3Checked);
-        // Perform additional actions for PMU 3
+      
         break;
       case 'pmuCheckbox4':
         console.log('PMU 4 checked:', this.pmu4Checked);
-        // Perform additional actions for PMU 4
+        
         break;
       default:
         break;
@@ -236,9 +226,6 @@ customColors = (value: any) => {
 
   convertUTCTimeToHHMMSSMilli(utcTimeInMilliseconds: number): string {
     const date = new Date(utcTimeInMilliseconds * 1000); // Use milliseconds directly
-    // const hours = String(date.getUTCHours()).padStart(2, '0');
-    // const minutes = String(date.getUTCMinutes()).padStart(2, '0');
-    // const seconds = String(date.getUTCSeconds()).padStart(2, '0');
     const milliseconds = String(date.getUTCMilliseconds()).padStart(3, '0');
     return `${milliseconds}`;
   }

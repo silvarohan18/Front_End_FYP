@@ -8,6 +8,7 @@ import { WebsocketService } from '../websocket.service';
   templateUrl: './maindash.component.html',
   styleUrls: ['./maindash.component.css']
 })
+
 export class MaindashComponent implements OnInit{
   dateTimeValue: string;
 
@@ -86,6 +87,47 @@ export class MaindashComponent implements OnInit{
 
   onShowData(){
     this.isLiveData=false;
-    console.log(this.dateTimeValue)
+    console.log(this.convertUTCTimeToHHMMSS)
+  }
+
+  setTime(time:string):Date{
+    const[h,m,sANDm] = time.split(":");
+    const[s,ms] = sANDm.split(".");
+
+    const newtime =  new Date();
+
+    newtime.setHours(Number(h));
+    newtime.setMinutes(Number(m));
+    newtime.setSeconds(Number(s));
+    newtime.setMilliseconds(Number(ms));
+
+    return newtime;
+  }
+
+   // Add this function to format the time in HH:mm
+   formatTime(date: Date): string {
+    const hours = this.padZero(date.getHours());
+    const minutes = this.padZero(date.getMinutes());
+    return `${hours}:${minutes}`;
+  }
+
+  padZero(num: number): string {
+    return num < 10 ? `0${num}` : `${num}`;
+  }
+
+  convertUTCTimeToHHMMSSMilli(utcTimeInMilliseconds: number): string {
+    const date = new Date(utcTimeInMilliseconds * 1000); // Use milliseconds directly
+    const seconds = String(date.getUTCSeconds()).padStart(2, '0');
+    const milliseconds = String(date.getUTCMilliseconds()).padStart(3, '0');
+    return `${milliseconds}`;
+  }
+
+  convertUTCTimeToHHMMSS(utcTimeInSeconds: number): string {
+    const date = new Date(utcTimeInSeconds * 1000); // Convert seconds to milliseconds
+    const hours = String(date.getUTCHours()).padStart(2, '0');
+    const minutes = String(date.getUTCMinutes()).padStart(2, '0');
+    const seconds = String(date.getUTCSeconds()).padStart(2, '0');
+
+    return `${hours}:${minutes}:${seconds}`;
   }
 }
