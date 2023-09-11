@@ -48,7 +48,7 @@ export class MaindashComponent implements OnInit{
     
     this.tableData=this._data.getLiveData()
     
-    console.log(this.tableData)
+   
   }
 
   onPmuCheckboxChange(checkboxId: string) {

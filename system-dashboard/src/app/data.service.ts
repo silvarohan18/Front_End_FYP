@@ -1,5 +1,6 @@
 import { Injectable ,OnInit} from '@angular/core';
 import { HttpClient } from "@angular/common/http";
+import { WebsocketService } from './websocket.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -283,7 +284,7 @@ export class DataService implements OnInit {
   ];
   jsonData: any[] = [];
   livedata:any[] = [];
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient, private websocketService:WebsocketService) { 
     setInterval(()=>{
       this.getData()
       // if(this.livedata.length>16){
@@ -301,6 +302,31 @@ export class DataService implements OnInit {
   //   },(error) => {
   //     console.error('Error:', error);
   //   })
+
+  this.websocketService.messages.subscribe((message: string) => {
+    const part = message.split(',');
+
+    var voltage=0;
+    var frequency=0;
+    if (part[0] === 'v') {
+      //this.topValues.voltage=parseFloat(part[1]);
+      voltage=parseFloat(part[1]);
+       
+    }
+
+    if(part[0]==='f2'){
+     // this.topValues.frequency=parseFloat(part[1]);
+     frequency=parseFloat(part[1]);
+    }
+    
+    if(this.livedata.length>16){
+      this.livedata.shift()
+    }
+    this.livedata.push({timestamp:new Date().toISOString().slice(0, 19).replace('T', ' '),voltage:voltage.toFixed(6),current:(Math.random() * (10 - 5) + 5).toFixed(6),frequency:frequency.toFixed(6),rocof:(Math.random() * (4) -2).toFixed(6),gps: { lat: 40.7128, lon: -74.0060 }})
+
+
+  });
+
   }
   ngOnInit() {}
   getData() {
@@ -313,9 +339,9 @@ export class DataService implements OnInit {
           console.log(item); // You can access properties of 'item' as needed
         }
     
-        // this.livedata = this.tableData;
+         this.livedata = this.tableData;
 
-        // this.livedata.push({timestamp:new Date().toISOString().slice(0, 19).replace('T', ' '),voltage:(Math.random() * (240 - 225) + 225).toFixed(6),current:(Math.random() * (10 - 5) + 5).toFixed(6),frequency:(Math.random() * (52 - 48) + 48).toFixed(6),rocof:(Math.random() * (4) -2).toFixed(6),gps: { lat: 40.7128, lon: -74.0060 }})
+         this.livedata.push({timestamp:new Date().toISOString().slice(0, 19).replace('T', ' '),voltage:(Math.random() * (240 - 225) + 225).toFixed(6),current:(Math.random() * (10 - 5) + 5).toFixed(6),frequency:(Math.random() * (52 - 48) + 48).toFixed(6),rocof:(Math.random() * (4) -2).toFixed(6),gps: { lat: 40.7128, lon: -74.0060 }})
     
         console.log(data);
       },
@@ -328,7 +354,6 @@ export class DataService implements OnInit {
     );
   }
   
-
   getAllData(){
     return this.tableData
   }
