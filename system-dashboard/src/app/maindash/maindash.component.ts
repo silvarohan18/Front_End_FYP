@@ -2,7 +2,6 @@ import { Component,OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { WebsocketService } from '../websocket.service';
 
-
 @Component({
   selector: 'app-maindash',
   templateUrl: './maindash.component.html',
@@ -19,10 +18,11 @@ export class MaindashComponent implements OnInit{
   public isLiveData=true
   tableData:any;
   topValues:any;
+  data: any;
 
   constructor(private _data:DataService, private websocketService:WebsocketService){
     const currentDate = new Date();
-    const timeZoneOffset = currentDate.getTimezoneOffset() * 60000; // Time zone offset in milliseconds
+    const timeZoneOffset = currentDate.getTimezoneOffset() * 60000;
     const adjustedDate = new Date(currentDate.getTime() - timeZoneOffset);
     this.dateTimeValue = adjustedDate.toISOString().slice(0, 16);
 
@@ -52,8 +52,10 @@ export class MaindashComponent implements OnInit{
   
   }
 
-  onPmuCheckboxChange(checkboxId: string) {
-    switch (checkboxId) {
+  onPmuCheckboxChange(checkboxId: string) 
+  {
+    switch (checkboxId) 
+    {
       case 'pmuCheckbox1':
         this.pmu2Checked = false;
         this.pmu3Checked = false;
@@ -77,23 +79,26 @@ export class MaindashComponent implements OnInit{
     }
   }
 
-  uncheckAllPMUexcept(pmu:string){
+  uncheckAllPMUexcept(pmu:string)
+  {
 
   }
 
-  onLiveData(){
+  onLiveData()
+  {
     this.isLiveData=true;
   }
 
-  onShowData(){
+  onShowData()
+  {
     this.isLiveData=false;
     console.log(this.convertUTCTimeToHHMMSS)
   }
 
-  setTime(time:string):Date{
+  setTime(time:string):Date
+  {
     const[h,m,sANDm] = time.split(":");
     const[s,ms] = sANDm.split(".");
-
     const newtime =  new Date();
 
     newtime.setHours(Number(h));
@@ -104,30 +109,30 @@ export class MaindashComponent implements OnInit{
     return newtime;
   }
 
-   // Add this function to format the time in HH:mm
-   formatTime(date: Date): string {
+   formatTime(date: Date): string 
+   {
     const hours = this.padZero(date.getHours());
     const minutes = this.padZero(date.getMinutes());
     return `${hours}:${minutes}`;
   }
 
-  padZero(num: number): string {
+  padZero(num: number): string 
+  {
     return num < 10 ? `0${num}` : `${num}`;
   }
 
   convertUTCTimeToHHMMSSMilli(utcTimeInMilliseconds: number): string {
-    const date = new Date(utcTimeInMilliseconds * 1000); // Use milliseconds directly
+    const date = new Date(utcTimeInMilliseconds * 1000); 
     const seconds = String(date.getUTCSeconds()).padStart(2, '0');
     const milliseconds = String(date.getUTCMilliseconds()).padStart(3, '0');
     return `${milliseconds}`;
   }
 
   convertUTCTimeToHHMMSS(utcTimeInSeconds: number): string {
-    const date = new Date(utcTimeInSeconds * 1000); // Convert seconds to milliseconds
+    const date = new Date(utcTimeInSeconds * 1000); 
     const hours = String(date.getUTCHours()).padStart(2, '0');
     const minutes = String(date.getUTCMinutes()).padStart(2, '0');
     const seconds = String(date.getUTCSeconds()).padStart(2, '0');
-
     return `${hours}:${minutes}:${seconds}`;
   }
 }
