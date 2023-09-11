@@ -71,7 +71,7 @@ yAxis: boolean = true;
 showYAxisLabel: boolean = true;
 showXAxisLabel: boolean = true;
 xAxisLabel: string = 'TIME';
-yAxisLabel: string = 'VOLTAGE';
+yAxisLabel: string = 'CURRENT';
 timeline: boolean = false;
 autoScale: boolean = true;
 
