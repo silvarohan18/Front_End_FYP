@@ -4,11 +4,11 @@ import { WebsocketService } from '../websocket.service';
 
 
 @Component({
-  selector: 'app-phase',
-  templateUrl: './phase.component.html',
-  styleUrls: ['./phase.component.css']
+  selector: 'app-voltage_phase',
+  templateUrl: './voltage_phase.component.html',
+  styleUrls: ['./voltage_phase.component.css']
 })
-export class PhaseComponent implements OnInit 
+export class Voltage_phaseComponent implements OnInit 
 {
   constructor(private websocketService: WebsocketService) 
   {
@@ -63,7 +63,7 @@ yAxis: boolean = true;
 showYAxisLabel: boolean = true;
 showXAxisLabel: boolean = true;
 xAxisLabel: string = 'TIME';
-yAxisLabel: string = 'PHASE';
+yAxisLabel: string = 'VPHASE';
 timeline: boolean = false;
 autoScale: boolean = true;
 

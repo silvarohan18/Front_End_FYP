@@ -8,7 +8,7 @@ import { CurrentComponent } from './current/current.component';
 import { MaindashComponent } from './maindash/maindash.component';
 import { FrequencyComponent } from './frequency/frequency.component';
 import { RocofComponent } from './rocof/rocof.component';
-import { PhaseComponent } from './phase/phase.component';
+import { Voltage_phaseComponent } from './voltage_phase/voltage_phase.component';
 import { AuthenticatedComponent } from './authenticated/authenticated.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
@@ -25,7 +25,7 @@ import { HomeComponent } from './home/home.component';
   declarations: [
     AppComponent,
     VoltageComponent,
-    PhaseComponent,
+    Voltage_phaseComponent,
     CurrentComponent,
     MaindashComponent,
     FrequencyComponent,

@@ -5,7 +5,7 @@ import { VoltageComponent } from './voltage/voltage.component';
 import { CurrentComponent } from './current/current.component';
 import { FrequencyComponent } from './frequency/frequency.component';
 import { RocofComponent } from './rocof/rocof.component';
-import { PhaseComponent } from './phase/phase.component';
+import { Voltage_phaseComponent } from './voltage_phase/voltage_phase.component';
 import { AuthenticatedComponent } from './authenticated/authenticated.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard, CanDeactivateGuard } from './auth.guard';
@@ -19,7 +19,7 @@ const routes: Routes = [
    children:[
     {path:"main",component:MaindashComponent},
     {path:"voltage",component:VoltageComponent},
-    {path:"phase",component:PhaseComponent},
+    {path:"voltage_phase",component:Voltage_phaseComponent},
     {path:"current",component:CurrentComponent},
     {path:"frequency",component:FrequencyComponent},
     {path:"rocof",component:RocofComponent},
