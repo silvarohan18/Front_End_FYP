@@ -26,7 +26,6 @@ export class MaindashComponent implements OnInit{
     const adjustedDate = new Date(currentDate.getTime() - timeZoneOffset);
     this.dateTimeValue = adjustedDate.toISOString().slice(0, 16);
 
-    //top volatage
     this.websocketService.messages.subscribe((message: string) => {
       const part = message.split(',');
 
