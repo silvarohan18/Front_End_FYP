@@ -14,18 +14,20 @@ export class VoltageComponent implements OnInit {
   constructor(private websocketService: WebsocketService) {
     this.websocketService.messages.subscribe((message: string) => {
       const part = message.split(',');
-      if (part[0] === 'v') {
-        const timeString = parseFloat(part[2]);
+      if (part[0] === 'v1') {
+        const timeString = parseFloat(part[19]);
         this.updateGraph(parseFloat(part[1]),timeString);
+        this.updateGraph_ph2(parseFloat(part[2]),timeString)
+        this.updateGraph_ph2(parseFloat(part[3]),timeString)
     }
     }
     );
 
   }
 
-  ngOnInit(): void 
+  ngOnInit(): void
   {
-    
+
   }
 
   isLiveData = true
@@ -34,7 +36,7 @@ export class VoltageComponent implements OnInit {
   pmu3Checked: boolean = false;
   pmu4Checked: boolean = false;
 
-  onPmuCheckboxChange(checkboxId: string) 
+  onPmuCheckboxChange(checkboxId: string)
   {
     switch (checkboxId) {
       case 'pmuCheckbox1':
@@ -47,11 +49,11 @@ export class VoltageComponent implements OnInit {
         break;
       case 'pmuCheckbox3':
         console.log('PMU 3 checked:', this.pmu3Checked);
-      
+
         break;
       case 'pmuCheckbox4':
         console.log('PMU 4 checked:', this.pmu4Checked);
-        
+
         break;
       default:
         break;
@@ -154,7 +156,7 @@ mag_value = [
   updateGraph_ph2(val:number,seconds:number)
   {
     const newSeries = {
-      name: this.convertUTCTimeToHHMMSS(seconds), 
+      name: this.convertUTCTimeToHHMMSS(seconds),
       value: val
     };
 
@@ -163,28 +165,28 @@ mag_value = [
 
     if (this.mag_value_ph2[0].series.length > 200) {
       this.mag_value_ph2[0].series.shift()
-      
+
     }
   }
 
   updateGraph_ph3(val:number,seconds:number)
   {
     const newSeries = {
-      name: this.convertUTCTimeToHHMMSS(seconds), 
+      name: this.convertUTCTimeToHHMMSS(seconds),
       value: val
     };
     this.mag_value_ph3 = [...this.mag_value_ph3];
     this.mag_value_ph3[0].series.push(newSeries);
 
-    if (this.mag_value_ph3[0].series.length > 200) 
+    if (this.mag_value_ph3[0].series.length > 200)
     {
       this.mag_value_ph3[0].series.shift()
-      
+
     }
   }
 
 
-  onPause() 
+  onPause()
   {
 
     clearInterval(this.intervalId);
@@ -192,12 +194,12 @@ mag_value = [
 
   }
 
-  onResume() 
+  onResume()
   {
-   
+
   }
 
-  onLive() 
+  onLive()
   {
     this.isLiveData = true
   }
