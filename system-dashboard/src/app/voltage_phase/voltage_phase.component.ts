@@ -8,23 +8,26 @@ import { WebsocketService } from '../websocket.service';
   templateUrl: './voltage_phase.component.html',
   styleUrls: ['./voltage_phase.component.css']
 })
-export class Voltage_phaseComponent implements OnInit 
+export class Voltage_phaseComponent implements OnInit
 {
-  constructor(private websocketService: WebsocketService) 
+  constructor(private websocketService: WebsocketService)
   {
     this.websocketService.messages.subscribe((message: string) => {
       const part = message.split(',');
-      if (part[0] === 'p') {
-        const timeString = parseFloat(part[22]);
-        this.updateGraph(parseFloat(part[1]),timeString);
-      }
+
+      if (part[0] === 'v1') {
+        const timeString = parseFloat(part[19]);
+        this.updateGraph(parseFloat(part[4]),timeString);
+        this.updateGraph_ph2(parseFloat(part[5]),timeString)
+        this.updateGraph_ph3(parseFloat(part[6]),timeString)
+    }
     }
     );
 
   }
 
   ngOnInit(): void {
-   
+
   }
 
   isLiveData = true
@@ -132,7 +135,7 @@ V1_phse = [
 
   updateGraph(val: number, seconds: number) {
     const newSeries = {
-      name: this.convertUTCTimeToHHMMSS(seconds), 
+      name: this.convertUTCTimeToHHMMSS(seconds),
       value: val
     };
 
@@ -147,7 +150,7 @@ V1_phse = [
 
   updateGraph_ph2(val:number,seconds:number){
     const newSeries = {
-      name: this.convertUTCTimeToHHMMSS(seconds), 
+      name: this.convertUTCTimeToHHMMSS(seconds),
       value: val
     };
 
@@ -156,13 +159,13 @@ V1_phse = [
 
     if (this.V2_phse[0].series.length > 200) {
       this.V2_phse[0].series.shift()
-   
+
     }
   }
 
   updateGraph_ph3(val:number,seconds:number){
     const newSeries = {
-      name: this.convertUTCTimeToHHMMSS(seconds), 
+      name: this.convertUTCTimeToHHMMSS(seconds),
       value: val
     };
     this.V3_phse = [...this.V3_phse];
@@ -181,12 +184,12 @@ V1_phse = [
   }
 
   onResume() {
-   
+
   }
 
   onLive() {
     this.isLiveData = true
-    
+
   }
 
   setTime(time:string):Date{
@@ -203,7 +206,7 @@ V1_phse = [
     return newtime;
   }
 
-  
+
    formatTime(date: Date): string {
     const hours = this.padZero(date.getHours());
     const minutes = this.padZero(date.getMinutes());

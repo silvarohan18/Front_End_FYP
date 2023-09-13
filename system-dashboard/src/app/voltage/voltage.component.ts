@@ -19,7 +19,7 @@ export class VoltageComponent implements OnInit {
         const timeString = parseFloat(part[19]);
         this.updateGraph(parseFloat(part[1]),timeString);
         this.updateGraph_ph2(parseFloat(part[2]),timeString)
-        this.updateGraph_ph2(parseFloat(part[3]),timeString)
+        this.updateGraph_ph3(parseFloat(part[3]),timeString)
     }
     }
     );
@@ -175,7 +175,9 @@ mag_value = [
     const newSeries = {
       name: this.convertUTCTimeToHHMMSS(seconds),
       value: val
+
     };
+    console.log(name)
     this.mag_value_ph3 = [...this.mag_value_ph3];
     this.mag_value_ph3[0].series.push(newSeries);
 
