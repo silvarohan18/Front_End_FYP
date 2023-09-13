@@ -14,9 +14,8 @@ export class RocofComponent implements OnInit {
   constructor(private websocketService: WebsocketService) {
     this.websocketService.messages.subscribe((message: string) => {
       const part = message.split(',');
-      //console.log(part[0])
       if (part[0] === 'r') {
-        const timeString = parseFloat(part[2]);
+        const timeString = parseFloat(part[22]);
         this.updateGraph(parseFloat(part[1]),timeString);
     }
     }
