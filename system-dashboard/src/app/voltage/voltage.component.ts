@@ -14,7 +14,6 @@ export class VoltageComponent implements OnInit {
   constructor(private websocketService: WebsocketService) {
     this.websocketService.messages.subscribe((message: string) => {
       const part = message.split(',');
-      //console.log(part[0])
       if (part[0] === 'v') {
         const timeString = parseFloat(part[2]);
         this.updateGraph(parseFloat(part[1]),timeString);
@@ -24,20 +23,19 @@ export class VoltageComponent implements OnInit {
 
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void 
+  {
     
   }
 
-
-
   isLiveData = true
-
   pmu1Checked: boolean = true;
   pmu2Checked: boolean = false;
   pmu3Checked: boolean = false;
   pmu4Checked: boolean = false;
 
-  onPmuCheckboxChange(checkboxId: string) {
+  onPmuCheckboxChange(checkboxId: string) 
+  {
     switch (checkboxId) {
       case 'pmuCheckbox1':
         console.log('PMU 1 hashkajsa:', this.pmu1Checked);
@@ -84,7 +82,7 @@ customColors = (value: any) => {
   return ['#5AA454', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5'];
 }
 
-  multi = [
+mag_value = [
     {
       name: 'Phase 1',
       series: [
@@ -100,7 +98,7 @@ customColors = (value: any) => {
     },
   ];
 
-  multi_ph2 = [
+  mag_value_ph2 = [
     {
       name: 'Phase 2',
       series: [
@@ -116,7 +114,7 @@ customColors = (value: any) => {
     },
   ];
 
-  multi_ph3 = [
+  mag_value_ph3 = [
     {
       name: 'Phase 3',
       series: [
@@ -140,62 +138,68 @@ customColors = (value: any) => {
 
   updateGraph(val: number, seconds: number) {
     const newSeries = {
-      name: this.convertUTCTimeToHHMMSS(seconds), // Use the formatTime function to get HH:mm
+      name: this.convertUTCTimeToHHMMSS(seconds),
       value: val
     };
 
-    this.multi = [...this.multi];
-    this.multi[0].series.push(newSeries);
+    this.mag_value = [...this.mag_value];
+    this.mag_value[0].series.push(newSeries);
 
-    if (this.multi[0].series.length > 200) {
-      this.multi[0].series.shift();
+    if (this.mag_value[0].series.length > 200) {
+      this.mag_value[0].series.shift();
     }
   }
 
 
-  updateGraph_ph2(val:number,seconds:number){
+  updateGraph_ph2(val:number,seconds:number)
+  {
     const newSeries = {
-      name: this.convertUTCTimeToHHMMSS(seconds), // Use the formatTime function to get HH:mm
+      name: this.convertUTCTimeToHHMMSS(seconds), 
       value: val
     };
 
-    this.multi_ph2 = [...this.multi_ph2];
-    this.multi_ph2[0].series.push(newSeries);
+    this.mag_value_ph2 = [...this.mag_value_ph2];
+    this.mag_value_ph2[0].series.push(newSeries);
 
-    if (this.multi_ph2[0].series.length > 200) {
-      this.multi_ph2[0].series.shift()
-      //this.seconds = 0;
+    if (this.mag_value_ph2[0].series.length > 200) {
+      this.mag_value_ph2[0].series.shift()
+      
     }
   }
 
-  updateGraph_ph3(val:number,seconds:number){
+  updateGraph_ph3(val:number,seconds:number)
+  {
     const newSeries = {
-      name: this.convertUTCTimeToHHMMSS(seconds), // Use the formatTime function to get HH:mm
+      name: this.convertUTCTimeToHHMMSS(seconds), 
       value: val
     };
-    this.multi_ph3 = [...this.multi_ph3];
-    this.multi_ph3[0].series.push(newSeries);
+    this.mag_value_ph3 = [...this.mag_value_ph3];
+    this.mag_value_ph3[0].series.push(newSeries);
 
-    if (this.multi_ph3[0].series.length > 200) {
-      this.multi_ph3[0].series.shift()
-      //this.seconds = 0;
+    if (this.mag_value_ph3[0].series.length > 200) 
+    {
+      this.mag_value_ph3[0].series.shift()
+      
     }
   }
 
 
-  onPause() {
+  onPause() 
+  {
+
     clearInterval(this.intervalId);
     this.isLiveData = false;
 
   }
 
-  onResume() {
-    // this.startInterval();
+  onResume() 
+  {
+   
   }
 
-  onLive() {
+  onLive() 
+  {
     this.isLiveData = true
-    // this.startInterval();
   }
 
   setTime(time:string):Date{
@@ -212,31 +216,27 @@ customColors = (value: any) => {
     return newtime;
   }
 
-   // Add this function to format the time in HH:mm
-   formatTime(date: Date): string {
+  formatTime(date: Date): string {
     const hours = this.padZero(date.getHours());
     const minutes = this.padZero(date.getMinutes());
     return `${hours}:${minutes}`;
   }
 
-  // Add this function to pad single-digit numbers with leading zeros
   padZero(num: number): string {
     return num < 10 ? `0${num}` : `${num}`;
   }
 
   convertUTCTimeToHHMMSSMilli(utcTimeInMilliseconds: number): string {
-    const date = new Date(utcTimeInMilliseconds * 1000); // Use milliseconds directly
+    const date = new Date(utcTimeInMilliseconds * 1000);
     const milliseconds = String(date.getUTCMilliseconds()).padStart(3, '0');
     return `${milliseconds}`;
   }
 
   convertUTCTimeToHHMMSS(utcTimeInSeconds: number): string {
-    const date = new Date(utcTimeInSeconds * 1000); // Convert seconds to milliseconds
+    const date = new Date(utcTimeInSeconds * 1000);
     const hours = String(date.getUTCHours()).padStart(2, '0');
     const minutes = String(date.getUTCMinutes()).padStart(2, '0');
     const seconds = String(date.getUTCSeconds()).padStart(2, '0');
-
     return `${hours}:${minutes}:${seconds}`;
   }
-
 }

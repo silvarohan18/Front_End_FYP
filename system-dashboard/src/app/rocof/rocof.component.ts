@@ -84,7 +84,7 @@ customColors = (value: any) => {
   return ['#5AA454', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5'];
 }
 
-  multi = [
+roocof = [
     {
       name: 'Phase 1',
       series: [
@@ -100,7 +100,7 @@ customColors = (value: any) => {
     },
   ];
 
-  multi_ph2 = [
+  roocof_ph2 = [
     {
       name: 'Phase 2',
       series: [
@@ -116,7 +116,7 @@ customColors = (value: any) => {
     },
   ];
 
-  multi_ph3 = [
+  roocof_ph3 = [
     {
       name: 'Phase 3',
       series: [
@@ -144,11 +144,11 @@ customColors = (value: any) => {
       value: val
     };
 
-    this.multi = [...this.multi];
-    this.multi[0].series.push(newSeries);
+    this.roocof = [...this.roocof];
+    this.roocof[0].series.push(newSeries);
 
-    if (this.multi[0].series.length > 200) {
-      this.multi[0].series.shift();
+    if (this.roocof[0].series.length > 200) {
+      this.roocof[0].series.shift();
     }
   }
 
@@ -159,11 +159,11 @@ customColors = (value: any) => {
       value: val
     };
 
-    this.multi_ph2 = [...this.multi_ph2];
-    this.multi_ph2[0].series.push(newSeries);
+    this.roocof_ph2 = [...this.roocof_ph2];
+    this.roocof_ph2[0].series.push(newSeries);
 
-    if (this.multi_ph2[0].series.length > 200) {
-      this.multi_ph2[0].series.shift()
+    if (this.roocof_ph2[0].series.length > 200) {
+      this.roocof_ph2[0].series.shift()
       //this.seconds = 0;
     }
   }
@@ -173,11 +173,11 @@ customColors = (value: any) => {
       name: this.convertUTCTimeToHHMMSS(seconds), // Use the formatTime function to get HH:mm
       value: val
     };
-    this.multi_ph3 = [...this.multi_ph3];
-    this.multi_ph3[0].series.push(newSeries);
+    this.roocof_ph3 = [...this.roocof_ph3];
+    this.roocof_ph3[0].series.push(newSeries);
 
-    if (this.multi_ph3[0].series.length > 200) {
-      this.multi_ph3[0].series.shift()
+    if (this.roocof_ph3[0].series.length > 200) {
+      this.roocof_ph3[0].series.shift()
       //this.seconds = 0;
     }
   }

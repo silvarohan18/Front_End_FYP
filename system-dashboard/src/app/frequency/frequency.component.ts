@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Color } from '@swimlane/ngx-charts';
 import { WebsocketService } from '../websocket.service';
 
-
 @Component({
   selector: 'app-frequency',
   templateUrl: './frequency.component.html',
@@ -14,14 +13,12 @@ export class FrequencyComponent implements OnInit {
   constructor(private websocketService: WebsocketService) {
     this.websocketService.messages.subscribe((message: string) => {
       const part = message.split(',');
-      //console.log(part[0])
       if (part[0] === 'f2') {
         const timeString = parseFloat(part[2]);
         this.updateGraph(parseFloat(part[1]),timeString);
     }
     }
-    );
-
+     );
   }
 
   ngOnInit(): void {
@@ -40,20 +37,16 @@ export class FrequencyComponent implements OnInit {
   onPmuCheckboxChange(checkboxId: string) {
     switch (checkboxId) {
       case 'pmuCheckbox1':
-        console.log('PMU 1 hashkajsa:', this.pmu1Checked);
-        // Perform additional actions for PMU 1
+        console.log('PMU 1 checked:', this.pmu1Checked);
         break;
       case 'pmuCheckbox2':
         console.log('PMU 2 checked:', this.pmu2Checked);
-        // Perform additional actions for PMU 2
         break;
       case 'pmuCheckbox3':
         console.log('PMU 3 checked:', this.pmu3Checked);
-      
         break;
       case 'pmuCheckbox4':
         console.log('PMU 4 checked:', this.pmu4Checked);
-        
         break;
       default:
         break;
@@ -62,7 +55,6 @@ export class FrequencyComponent implements OnInit {
 
   view: [number, number] = [window.innerWidth, 300];
 
-// chart options
 legend: boolean = true;
 showLabels: boolean = true;
 animations: boolean = true;
@@ -84,7 +76,7 @@ customColors = (value: any) => {
   return ['#5AA454', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5'];
 }
 
-  multi = [
+  freq_val = [
     {
       name: 'Phase 1',
       series: [
@@ -100,7 +92,7 @@ customColors = (value: any) => {
     },
   ];
 
-  multi_ph2 = [
+  freq_val_ph2 = [
     {
       name: 'Phase 2',
       series: [
@@ -116,7 +108,7 @@ customColors = (value: any) => {
     },
   ];
 
-  multi_ph3 = [
+  freq_new_ph3 = [
     {
       name: 'Phase 3',
       series: [
@@ -144,11 +136,11 @@ customColors = (value: any) => {
       value: val
     };
 
-    this.multi = [...this.multi];
-    this.multi[0].series.push(newSeries);
+    this.freq_val = [...this.freq_val];
+    this.freq_val[0].series.push(newSeries);
 
-    if (this.multi[0].series.length > 200) {
-      this.multi[0].series.shift();
+    if (this.freq_val[0].series.length > 200) {
+      this.freq_val[0].series.shift();
     }
   }
 
@@ -159,12 +151,11 @@ customColors = (value: any) => {
       value: val
     };
 
-    this.multi_ph2 = [...this.multi_ph2];
-    this.multi_ph2[0].series.push(newSeries);
+    this.freq_val_ph2 = [...this.freq_val_ph2];
+    this.freq_val_ph2[0].series.push(newSeries);
 
-    if (this.multi_ph2[0].series.length > 200) {
-      this.multi_ph2[0].series.shift()
-      //this.seconds = 0;
+    if (this.freq_val_ph2[0].series.length > 200) {
+      this.freq_val_ph2[0].series.shift()
     }
   }
 
@@ -173,15 +164,13 @@ customColors = (value: any) => {
       name: this.convertUTCTimeToHHMMSS(seconds), // Use the formatTime function to get HH:mm
       value: val
     };
-    this.multi_ph3 = [...this.multi_ph3];
-    this.multi_ph3[0].series.push(newSeries);
+    this.freq_new_ph3 = [...this.freq_new_ph3];
+    this.freq_new_ph3[0].series.push(newSeries);
 
-    if (this.multi_ph3[0].series.length > 200) {
-      this.multi_ph3[0].series.shift()
-      //this.seconds = 0;
+    if (this.freq_new_ph3[0].series.length > 200) {
+      this.freq_new_ph3[0].series.shift()
     }
   }
-
 
   onPause() {
     clearInterval(this.intervalId);
@@ -189,13 +178,14 @@ customColors = (value: any) => {
 
   }
 
-  onResume() {
-    // this.startInterval();
+  onResume() 
+  {
+   
   }
 
   onLive() {
     this.isLiveData = true
-    // this.startInterval();
+    
   }
 
   setTime(time:string):Date{
@@ -212,26 +202,24 @@ customColors = (value: any) => {
     return newtime;
   }
 
-   // Add this function to format the time in HH:mm
-   formatTime(date: Date): string {
+    formatTime(date: Date): string {
     const hours = this.padZero(date.getHours());
     const minutes = this.padZero(date.getMinutes());
     return `${hours}:${minutes}`;
   }
 
-  // Add this function to pad single-digit numbers with leading zeros
   padZero(num: number): string {
     return num < 10 ? `0${num}` : `${num}`;
   }
 
   convertUTCTimeToHHMMSSMilli(utcTimeInMilliseconds: number): string {
-    const date = new Date(utcTimeInMilliseconds * 1000); // Use milliseconds directly
+    const date = new Date(utcTimeInMilliseconds * 1000); 
     const milliseconds = String(date.getUTCMilliseconds()).padStart(3, '0');
     return `${milliseconds}`;
   }
 
   convertUTCTimeToHHMMSS(utcTimeInSeconds: number): string {
-    const date = new Date(utcTimeInSeconds * 1000); // Convert seconds to milliseconds
+    const date = new Date(utcTimeInSeconds * 1000);
     const hours = String(date.getUTCHours()).padStart(2, '0');
     const minutes = String(date.getUTCMinutes()).padStart(2, '0');
     const seconds = String(date.getUTCSeconds()).padStart(2, '0');

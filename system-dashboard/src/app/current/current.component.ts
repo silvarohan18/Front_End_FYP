@@ -14,7 +14,6 @@ export class CurrentComponent implements OnInit {
   constructor(private websocketService: WebsocketService) {
     this.websocketService.messages.subscribe((message: string) => {
       const part = message.split(',');
-      //console.log(part[0])
       if (part[0] === 'c') {
         const timeString = parseFloat(part[2]);
         this.updateGraph(parseFloat(part[1]),timeString);
@@ -41,19 +40,15 @@ export class CurrentComponent implements OnInit {
     switch (checkboxId) {
       case 'pmuCheckbox1':
         console.log('PMU 1 hashkajsa:', this.pmu1Checked);
-        // Perform additional actions for PMU 1
         break;
       case 'pmuCheckbox2':
         console.log('PMU 2 checked:', this.pmu2Checked);
-        // Perform additional actions for PMU 2
         break;
       case 'pmuCheckbox3':
         console.log('PMU 3 checked:', this.pmu3Checked);
-      
         break;
       case 'pmuCheckbox4':
         console.log('PMU 4 checked:', this.pmu4Checked);
-        
         break;
       default:
         break;
@@ -62,7 +57,6 @@ export class CurrentComponent implements OnInit {
 
   view: [number, number] = [window.innerWidth, 300];
 
-// chart options
 legend: boolean = true;
 showLabels: boolean = true;
 animations: boolean = true;
@@ -84,7 +78,7 @@ customColors = (value: any) => {
   return ['#5AA454', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5'];
 }
 
-  multi = [
+C_mag_value = [
     {
       name: 'Phase 1',
       series: [
@@ -100,7 +94,7 @@ customColors = (value: any) => {
     },
   ];
 
-  multi_ph2 = [
+  C_mag_value_ph2 = [
     {
       name: 'Phase 2',
       series: [
@@ -116,7 +110,7 @@ customColors = (value: any) => {
     },
   ];
 
-  multi_ph3 = [
+  C_mag_value_ph3 = [
     {
       name: 'Phase 3',
       series: [
@@ -140,45 +134,46 @@ customColors = (value: any) => {
 
   updateGraph(val: number, seconds: number) {
     const newSeries = {
-      name: this.convertUTCTimeToHHMMSS(seconds), // Use the formatTime function to get HH:mm
+      name: this.convertUTCTimeToHHMMSS(seconds), 
       value: val
     };
 
-    this.multi = [...this.multi];
-    this.multi[0].series.push(newSeries);
+    this.C_mag_value = [...this.C_mag_value];
+    this.C_mag_value[0].series.push(newSeries);
 
-    if (this.multi[0].series.length > 200) {
-      this.multi[0].series.shift();
+    if (this.C_mag_value[0].series.length > 200) {
+      this.C_mag_value[0].series.shift();
     }
   }
 
 
   updateGraph_ph2(val:number,seconds:number){
     const newSeries = {
-      name: this.convertUTCTimeToHHMMSS(seconds), // Use the formatTime function to get HH:mm
+      name: this.convertUTCTimeToHHMMSS(seconds), 
       value: val
     };
 
-    this.multi_ph2 = [...this.multi_ph2];
-    this.multi_ph2[0].series.push(newSeries);
+    this.C_mag_value_ph2 = [...this.C_mag_value_ph2];
+    this.C_mag_value_ph2[0].series.push(newSeries);
 
-    if (this.multi_ph2[0].series.length > 200) {
-      this.multi_ph2[0].series.shift()
-      //this.seconds = 0;
+    if (this.C_mag_value_ph2[0].series.length > 200) {
+      this.C_mag_value_ph2[0].series.shift()
+      
     }
   }
 
   updateGraph_ph3(val:number,seconds:number){
     const newSeries = {
-      name: this.convertUTCTimeToHHMMSS(seconds), // Use the formatTime function to get HH:mm
+      name: this.convertUTCTimeToHHMMSS(seconds), 
       value: val
     };
-    this.multi_ph3 = [...this.multi_ph3];
-    this.multi_ph3[0].series.push(newSeries);
+    this.C_mag_value_ph3 = [...this.C_mag_value_ph3];
+    this.C_mag_value_ph3[0].series.push(newSeries);
 
-    if (this.multi_ph3[0].series.length > 200) {
-      this.multi_ph3[0].series.shift()
-      //this.seconds = 0;
+    if (this.C_mag_value_ph3[0].series.length > 200) 
+    {
+      this.C_mag_value_ph3[0].series.shift()
+      
     }
   }
 
@@ -189,13 +184,15 @@ customColors = (value: any) => {
 
   }
 
-  onResume() {
-    // this.startInterval();
+  onResume() 
+  {
+    
   }
 
-  onLive() {
+  onLive() 
+  {
     this.isLiveData = true
-    // this.startInterval();
+    
   }
 
   setTime(time:string):Date{
