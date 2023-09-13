@@ -14,12 +14,13 @@ export class RocofComponent implements OnInit {
   constructor(private websocketService: WebsocketService) {
     this.websocketService.messages.subscribe((message: string) => {
       const part = message.split(',');
-      //console.log(part[0])
+
       if (part[0] === 'v1') {
         const timeString = parseFloat(part[19]);
         this.updateGraph(parseFloat(part[10]),timeString);
         this.updateGraph_ph2(parseFloat(part[11]),timeString)
         this.updateGraph_ph3(parseFloat(part[12]),timeString)
+
     }
     }
     );

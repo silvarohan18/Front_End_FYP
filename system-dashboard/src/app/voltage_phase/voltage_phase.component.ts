@@ -14,6 +14,7 @@ export class Voltage_phaseComponent implements OnInit
   {
     this.websocketService.messages.subscribe((message: string) => {
       const part = message.split(',');
+
       if (part[0] === 'v1') {
         const timeString = parseFloat(part[19]);
         this.updateGraph(parseFloat(part[4]),timeString);

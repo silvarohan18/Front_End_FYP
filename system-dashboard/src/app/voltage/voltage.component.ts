@@ -14,6 +14,7 @@ export class VoltageComponent implements OnInit {
   constructor(private websocketService: WebsocketService) {
     this.websocketService.messages.subscribe((message: string) => {
       const part = message.split(',');
+
       if (part[0] === 'v1') {
         const timeString = parseFloat(part[19]);
         this.updateGraph(parseFloat(part[1]),timeString);
@@ -60,7 +61,7 @@ export class VoltageComponent implements OnInit {
     }
   }
 
-  view: [number, number] = [window.innerWidth, 300];
+view: [number, number] = [window.innerWidth, 300];
 
 // chart options
 legend: boolean = true;

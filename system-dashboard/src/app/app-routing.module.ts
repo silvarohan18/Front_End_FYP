@@ -26,9 +26,7 @@ const routes: Routes = [
     {path:"frequency",component:FrequencyComponent},
     {path:"rocof",component:RocofComponent},
    ]
-   
   },
- 
 ];
 
 @NgModule({

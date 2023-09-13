@@ -13,11 +13,13 @@ export class FrequencyComponent implements OnInit {
   constructor(private websocketService: WebsocketService) {
     this.websocketService.messages.subscribe((message: string) => {
       const part = message.split(',');
+
       if (part[0] === 'v1') {
         const timeString = parseFloat(part[19]);
         this.updateGraph(parseFloat(part[7]),timeString);
         this.updateGraph_ph2(parseFloat(part[8]),timeString)
         this.updateGraph_ph3(parseFloat(part[9]),timeString)
+
     }
     }
      );
