@@ -13,16 +13,18 @@ export class FrequencyComponent implements OnInit {
   constructor(private websocketService: WebsocketService) {
     this.websocketService.messages.subscribe((message: string) => {
       const part = message.split(',');
-      if (part[0] === 'f2') {
-        const timeString = parseFloat(part[2]);
-        this.updateGraph(parseFloat(part[1]),timeString);
+      if (part[0] === 'v1') {
+        const timeString = parseFloat(part[19]);
+        this.updateGraph(parseFloat(part[7]),timeString);
+        this.updateGraph_ph2(parseFloat(part[8]),timeString)
+        this.updateGraph_ph3(parseFloat(part[9]),timeString)
     }
     }
      );
   }
 
   ngOnInit(): void {
-    
+
   }
 
 
@@ -178,14 +180,14 @@ customColors = (value: any) => {
 
   }
 
-  onResume() 
+  onResume()
   {
-   
+
   }
 
   onLive() {
     this.isLiveData = true
-    
+
   }
 
   setTime(time:string):Date{
@@ -213,7 +215,7 @@ customColors = (value: any) => {
   }
 
   convertUTCTimeToHHMMSSMilli(utcTimeInMilliseconds: number): string {
-    const date = new Date(utcTimeInMilliseconds * 1000); 
+    const date = new Date(utcTimeInMilliseconds * 1000);
     const milliseconds = String(date.getUTCMilliseconds()).padStart(3, '0');
     return `${milliseconds}`;
   }

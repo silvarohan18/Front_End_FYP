@@ -14,9 +14,11 @@ export class CurrentComponent implements OnInit {
   constructor(private websocketService: WebsocketService) {
     this.websocketService.messages.subscribe((message: string) => {
       const part = message.split(',');
-      if (part[0] === 'c') {
-        const timeString = parseFloat(part[2]);
-        this.updateGraph(parseFloat(part[1]),timeString);
+      if (part[0] === 'v1') {
+        const timeString = parseFloat(part[19]);
+        this.updateGraph(parseFloat(part[13]),timeString);
+        this.updateGraph_ph2(parseFloat(part[14]),timeString)
+        this.updateGraph_ph3(parseFloat(part[15]),timeString)
     }
     }
     );
@@ -24,7 +26,7 @@ export class CurrentComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+
   }
 
 
@@ -134,7 +136,7 @@ C_mag_value = [
 
   updateGraph(val: number, seconds: number) {
     const newSeries = {
-      name: this.convertUTCTimeToHHMMSS(seconds), 
+      name: this.convertUTCTimeToHHMMSS(seconds),
       value: val
     };
 
@@ -149,7 +151,7 @@ C_mag_value = [
 
   updateGraph_ph2(val:number,seconds:number){
     const newSeries = {
-      name: this.convertUTCTimeToHHMMSS(seconds), 
+      name: this.convertUTCTimeToHHMMSS(seconds),
       value: val
     };
 
@@ -158,22 +160,22 @@ C_mag_value = [
 
     if (this.C_mag_value_ph2[0].series.length > 200) {
       this.C_mag_value_ph2[0].series.shift()
-      
+
     }
   }
 
   updateGraph_ph3(val:number,seconds:number){
     const newSeries = {
-      name: this.convertUTCTimeToHHMMSS(seconds), 
+      name: this.convertUTCTimeToHHMMSS(seconds),
       value: val
     };
     this.C_mag_value_ph3 = [...this.C_mag_value_ph3];
     this.C_mag_value_ph3[0].series.push(newSeries);
 
-    if (this.C_mag_value_ph3[0].series.length > 200) 
+    if (this.C_mag_value_ph3[0].series.length > 200)
     {
       this.C_mag_value_ph3[0].series.shift()
-      
+
     }
   }
 
@@ -184,15 +186,15 @@ C_mag_value = [
 
   }
 
-  onResume() 
+  onResume()
   {
-    
+
   }
 
-  onLive() 
+  onLive()
   {
     this.isLiveData = true
-    
+
   }
 
   setTime(time:string):Date{

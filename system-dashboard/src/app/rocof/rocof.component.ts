@@ -15,9 +15,11 @@ export class RocofComponent implements OnInit {
     this.websocketService.messages.subscribe((message: string) => {
       const part = message.split(',');
       //console.log(part[0])
-      if (part[0] === 'r') {
-        const timeString = parseFloat(part[2]);
-        this.updateGraph(parseFloat(part[1]),timeString);
+      if (part[0] === 'v1') {
+        const timeString = parseFloat(part[19]);
+        this.updateGraph(parseFloat(part[10]),timeString);
+        this.updateGraph_ph2(parseFloat(part[11]),timeString)
+        this.updateGraph_ph3(parseFloat(part[12]),timeString)
     }
     }
     );
@@ -25,7 +27,7 @@ export class RocofComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+
   }
 
 
@@ -49,11 +51,11 @@ export class RocofComponent implements OnInit {
         break;
       case 'pmuCheckbox3':
         console.log('PMU 3 checked:', this.pmu3Checked);
-      
+
         break;
       case 'pmuCheckbox4':
         console.log('PMU 4 checked:', this.pmu4Checked);
-        
+
         break;
       default:
         break;
