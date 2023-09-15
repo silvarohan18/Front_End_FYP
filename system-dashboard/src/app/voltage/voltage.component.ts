@@ -20,6 +20,7 @@ export class VoltageComponent implements OnInit {
         this.updateGraph(parseFloat(part[1]),timeString);
         this.updateGraph_ph2(parseFloat(part[2]),timeString)
         this.updateGraph_ph3(parseFloat(part[3]),timeString)
+        //console.log(this.convertUTCTimeToHHMMSSMilli(timeString))
     }
     }
     );
@@ -75,6 +76,7 @@ xAxisLabel: string = 'TIME';
 yAxisLabel: string = 'VOLTAGE';
 timeline: boolean = false;
 autoScale: boolean = true;
+
 
 colorScheme = {
   domain: ['#5AA454', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5']
@@ -133,6 +135,30 @@ mag_value = [
     },
   ];
 
+  referenceLines: any[] = [
+    {
+      name: '230 V', // Name of the reference line
+      value: 230, // The value where the line should be drawn
+      strokeDashArray: '5 5', // Optional: Specify a stroke dash array for the line
+      strokeWidth: 2, // Optional: Specify the stroke width
+      strokeOpacity: 0.7, // Optional: Specify the stroke opacity
+      position: 'end', // Optional: Specify the position of the reference line ('start' or 'end')
+      labelPosition: 'top', // Optional: Specify the label position ('top' or 'bottom')
+      orientation: 'horizontal' // Optional: Specify the orientation of the reference line ('horizontal' or 'vertical')
+    },
+
+    {
+      name: '200 V', // Name of the reference line
+      value: 200, // The value where the line should be drawn
+      strokeDashArray: '5 5', // Optional: Specify a stroke dash array for the line
+      strokeWidth: 2, // Optional: Specify the stroke width
+      strokeOpacity: 0.7, // Optional: Specify the stroke opacity
+      position: 'end', // Optional: Specify the position of the reference line ('start' or 'end')
+      labelPosition: 'top', // Optional: Specify the label position ('top' or 'bottom')
+      orientation: 'horizontal' // Optional: Specify the orientation of the reference line ('horizontal' or 'vertical')
+    },
+    // Add more reference lines as needed
+  ];
 
 
   intervalId: any;
@@ -148,7 +174,7 @@ mag_value = [
     this.mag_value = [...this.mag_value];
     this.mag_value[0].series.push(newSeries);
 
-    if (this.mag_value[0].series.length > 200) {
+    if (this.mag_value[0].series.length > 500) {
       this.mag_value[0].series.shift();
     }
   }
@@ -164,7 +190,7 @@ mag_value = [
     this.mag_value_ph2 = [...this.mag_value_ph2];
     this.mag_value_ph2[0].series.push(newSeries);
 
-    if (this.mag_value_ph2[0].series.length > 200) {
+    if (this.mag_value_ph2[0].series.length > 500) {
       this.mag_value_ph2[0].series.shift()
 
     }
@@ -175,13 +201,11 @@ mag_value = [
     const newSeries = {
       name: this.convertUTCTimeToHHMMSS(seconds),
       value: val
-
     };
-    console.log(name)
     this.mag_value_ph3 = [...this.mag_value_ph3];
     this.mag_value_ph3[0].series.push(newSeries);
 
-    if (this.mag_value_ph3[0].series.length > 200)
+    if (this.mag_value_ph3[0].series.length > 500)
     {
       this.mag_value_ph3[0].series.shift()
 
