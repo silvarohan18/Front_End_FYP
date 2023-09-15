@@ -129,7 +129,6 @@ customColors = (value: any) => {
   ];
 
 
-
   intervalId: any;
   seconds = 0
   time = 50

@@ -66,7 +66,7 @@ yAxis: boolean = true;
 showYAxisLabel: boolean = true;
 showXAxisLabel: boolean = true;
 xAxisLabel: string = 'TIME';
-yAxisLabel: string = 'VPHASE';
+yAxisLabel: string = 'VOLTAGE PHASE';
 timeline: boolean = false;
 autoScale: boolean = true;
 

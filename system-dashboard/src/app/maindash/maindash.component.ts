@@ -19,7 +19,7 @@ export class MaindashComponent implements OnInit{
   tableData:any;
   topValues:any;
   data: any;
-
+  
   constructor(private _data:DataService, private websocketService:WebsocketService){
     const currentDate = new Date();
     const timeZoneOffset = currentDate.getTimezoneOffset() * 60000;
@@ -29,19 +29,7 @@ export class MaindashComponent implements OnInit{
     this.websocketService.messages.subscribe((message: string) => {
       const part = message.split(',');
 
-      if (part[0] === 'v') 
-      {
-        this.topValues.voltage=parseFloat(part[1]);
-      }
-
-      else if(part[0]==='c')
-      {
-        this.topValues.current=parseFloat(part[1]);
-      }
-
-      else if(part[0]==='f2'){
-        this.topValues.frequency=parseFloat(part[1]);
-      }
+      
     });
   }
 
@@ -94,6 +82,8 @@ export class MaindashComponent implements OnInit{
     console.log(this.convertUTCTimeToHHMMSS)
   }
 
+ 
+    
   setTime(time:string):Date
   {
     const[h,m,sANDm] = time.split(":");
@@ -135,3 +125,4 @@ export class MaindashComponent implements OnInit{
     return `${hours}:${minutes}:${seconds}`;
   }
 }
+

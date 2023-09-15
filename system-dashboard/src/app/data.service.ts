@@ -6,353 +6,36 @@ import { WebsocketService } from './websocket.service';
 })
 export class DataService implements OnInit {
 
-  tableData: any[] = [
-    {
-      timestamp: '2023-06-25 10:00:00',
-      voltage: 120,
-      current: 5,
-      frequency: 60,
-      rocof: 0.1,
-      gps: { lat: 40.7128, lon: -74.0060 }
-    },
-    {
-      timestamp: '2023-06-25 10:00:00',
-      voltage: 120,
-      current: 5,
-      frequency: 60,
-      rocof: 0.1,
-      gps: { lat: 40.7128, lon: -74.0060 }
-    },
-    {
-      timestamp: '2023-06-25 10:00:00',
-      voltage: 120,
-      current: 5,
-      frequency: 60,
-      rocof: 0.1,
-      gps: { lat: 40.7128, lon: -74.0060 }
-    },
-    {
-      timestamp: '2023-06-25 10:00:00',
-      voltage: 120,
-      current: 5,
-      frequency: 60,
-      rocof: 0.1,
-      gps: { lat: 40.7128, lon: -74.0060 }
-    },
-    {
-      timestamp: '2023-06-25 10:00:00',
-      voltage: 120,
-      current: 5,
-      frequency: 60,
-      rocof: 0.1,
-      gps: { lat: 40.7128, lon: -74.0060 }
-    },
-    {
-      timestamp: '2023-06-25 10:00:00',
-      voltage: 120,
-      current: 5,
-      frequency: 60,
-      rocof: 0.1,
-      gps: { lat: 40.7128, lon: -74.0060 }
-    },
-    {
-      timestamp: '2023-06-25 10:00:00',
-      voltage: 120,
-      current: 5,
-      frequency: 60,
-      rocof: 0.1,
-      gps: { lat: 40.7128, lon: -74.0060 }
-    },
-    {
-      timestamp: '2023-06-25 10:00:00',
-      voltage: 120,
-      current: 5,
-      frequency: 60,
-      rocof: 0.1,
-      gps: { lat: 40.7128, lon: -74.0060 }
-    },
-    {
-      timestamp: '2023-06-25 10:00:00',
-      voltage: 120,
-      current: 5,
-      frequency: 60,
-      rocof: 0.1,
-      gps: { lat: 40.7128, lon: -74.0060 }
-    },
-    {
-      timestamp: '2023-06-25 10:00:00',
-      voltage: 120,
-      current: 5,
-      frequency: 60,
-      rocof: 0.1,
-      gps: { lat: 40.7128, lon: -74.0060 }
-    },
-    {
-      timestamp: '2023-06-25 10:00:00',
-      voltage: 120,
-      current: 5,
-      frequency: 60,
-      rocof: 0.1,
-      gps: { lat: 40.7128, lon: -74.0060 }
-    },
-    {
-      timestamp: '2023-06-25 10:00:00',
-      voltage: 120,
-      current: 5,
-      frequency: 60,
-      rocof: 0.1,
-      gps: { lat: 40.7128, lon: -74.0060 }
-    },
-    {
-      timestamp: '2023-06-25 10:00:00',
-      voltage: 120,
-      current: 5,
-      frequency: 60,
-      rocof: 0.1,
-      gps: { lat: 40.7128, lon: -74.0060 }
-    },
-    {
-      timestamp: '2023-06-25 10:00:00',
-      voltage: 120,
-      current: 5,
-      frequency: 60,
-      rocof: 0.1,
-      gps: { lat: 40.7128, lon: -74.0060 }
-    },
-    {
-      timestamp: '2023-06-25 10:00:00',
-      voltage: 120,
-      current: 5,
-      frequency: 60,
-      rocof: 0.1,
-      gps: { lat: 40.7128, lon: -74.0060 }
-    },
-    {
-      timestamp: '2023-06-25 10:00:00',
-      voltage: 120,
-      current: 5,
-      frequency: 60,
-      rocof: 0.1,
-      gps: { lat: 40.7128, lon: -74.0060 }
-    },
-    {
-      timestamp: '2023-06-25 10:00:00',
-      voltage: 120,
-      current: 5,
-      frequency: 60,
-      rocof: 0.1,
-      gps: { lat: 40.7128, lon: -74.0060 }
-    },
-    {
-      timestamp: '2023-06-25 10:00:00',
-      voltage: 120,
-      current: 5,
-      frequency: 60,
-      rocof: 0.1,
-      gps: { lat: 40.7128, lon: -74.0060 }
-    },
-    {
-      timestamp: '2023-06-25 10:00:00',
-      voltage: 120,
-      phase : 20,
-      current: 5,
-      frequency: 60,
-      rocof: 0.1,
-      gps: { lat: 40.7128, lon: -74.0060 }
-    },
-    {
-      timestamp: '2023-06-25 10:00:00',
-      voltage: 120,
-      phase : 20,
-      current: 5,
-      frequency: 60,
-      rocof: 0.1,
-      gps: { lat: 40.7128, lon: -74.0060 }
-    },
-    {
-      timestamp: '2023-06-25 10:00:00',
-      voltage: 120,
-      phase : 20,
-      current: 5,
-      frequency: 60,
-      rocof: 0.1,
-      gps: { lat: 40.7128, lon: -74.0060 }
-    },
-    {
-      timestamp: '2023-06-25 10:00:00',
-      voltage: 120,
-      phase : 20,
-      current: 5,
-      frequency: 60,
-      rocof: 0.1,
-      gps: { lat: 40.7128, lon: -74.0060 }
-    },
-    {
-      timestamp: '2023-06-25 10:00:01',
-      voltage: 120,
-      phase : 20,
-      current: 5,
-      frequency: 60,
-      rocof: 0.1,
-      gps: { lat: 40.7128, lon: -74.0060 }
-    },
-    {
-      timestamp: '2023-06-25 10:00:01',
-      voltage: 120,
-      phase : 20,
-      current: 5,
-      frequency: 60,
-      rocof: 0.1,
-      gps: { lat: 40.7128, lon: -74.0060 }
-    },
-    {
-      timestamp: '2023-06-25 10:00:01',
-      voltage: 120,
-      phase : 20,
-      current: 5,
-      frequency: 60,
-      rocof: 0.1,
-      gps: { lat: 40.7128, lon: -74.0060 }
-    },
-    {
-      timestamp: '2023-06-25 10:00:01',
-      voltage: 120,
-      phase : 20,
-      current: 5,
-      frequency: 60,
-      rocof: 0.1,
-      gps: { lat: 40.7128, lon: -74.0060 }
-    },
-    {
-      timestamp: '2023-06-25 10:00:01',
-      voltage: 120,
-      phase : 20,
-      current: 5,
-      frequency: 60,
-      rocof: 0.1,
-      gps: { lat: 40.7128, lon: -74.0060 }
-    },
-    {
-      timestamp: '2023-06-25 10:00:01',
-      voltage: 120,
-      phase : 20,
-      current: 5,
-      frequency: 60,
-      rocof: 0.1,
-      gps: { lat: 40.7128, lon: -74.0060 }
-    },
-    {
-      timestamp: '2023-06-25 10:00:01',
-      voltage: 120,
-      phase : 20,
-      current: 5,
-      frequency: 60,
-      rocof: 0.1,
-      gps: { lat: 40.7128, lon: -74.0060 }
-    },
-    {
-      timestamp: '2023-06-25 10:00:01',
-      voltage: 120,
-      phase : 20,
-      current: 5,
-      frequency: 60,
-      rocof: 0.1,
-      gps: { lat: 40.7128, lon: -74.0060 }
-    },
-    {
-      timestamp: '2023-06-25 10:00:01',
-      voltage: 120,
-      phase : 20,
-      current: 5,
-      frequency: 60,
-      rocof: 0.1,
-      gps: { lat: 40.7128, lon: -74.0060 }
-    },
-    {
-      timestamp: '2023-06-25 10:00:01',
-      voltage: 120,
-      phase : 20,
-      current: 5,
-      frequency: 60,
-      rocof: 0.1,
-      gps: { lat: 40.7128, lon: -74.0060 }
-    },
-    {
-      timestamp: '2023-06-25 10:00:01',
-      voltage: 120,
-      phase : 20,
-      current: 5,
-      frequency: 60,
-      rocof: 0.1,
-      gps: { lat: 40.7128, lon: -74.0060 }
-    },
-    {
-      timestamp: '2023-06-25 10:00:01',
-      voltage: 120,
-      phase : 20,
-      current: 5,
-      frequency: 60,
-      rocof: 0.1,
-      gps: { lat: 40.7128, lon: -74.0060 }
-    },
-
-    // Add more data objects
-  ];
+  tableData: any[] = [];
   jsonData: any[] = [];
   livedata:any[] = [];
   constructor(private http: HttpClient, private websocketService:WebsocketService) { 
-    setInterval(()=>{
-      this.getData()
-      // if(this.livedata.length>16){
-      //   this.livedata.shift()
-      // }
-      // this.livedata.push({timestamp:new Date().toISOString().slice(0, 19).replace('T', ' '),voltage:(Math.random() * (240 - 225) + 225).toFixed(6),current:(Math.random() * (10 - 5) + 5).toFixed(6),frequency:(Math.random() * (52 - 48) + 48).toFixed(6),rocof:(Math.random() * (4) -2).toFixed(6),gps: { lat: 40.7128, lon: -74.0060 }})
-    },2000)
-  
+    this.websocketService.messages.subscribe((message: string) => {
+      const part = message.split(',');
+      if (part[0] === 'v1') {
+        const newData = {
+          //phase 1 data
+          timestamp:part[19],
+          voltage: part[1],
+          voltage_phase: part[4],
+          current: part[13],
+          current_phase: part[16],
+          frequency: part[7],
+          rocof: part[10],
+          gps: { lat: 40.7128, lon: -74.0060 },
+        };
 
-  // getData(){
-  //   const url = 'http://localhost:8080/'
-  //   this.http.get(url).subscribe((res)=>{
-  //     this.livedata = res
-  //     console.log(this.livedata)
-  //   },(error) => {
-  //     console.error('Error:', error);
-  //   })
-
-  this.websocketService.messages.subscribe((message: string) => {
-    const part = message.split(',');
-
-    var voltage=0;
-    var frequency=0;
-    var current=0;
-    var phase = 0;
-
-    if (part[0] === 'v') {
-      //this.topValues.voltage=parseFloat(part[1]);
-      voltage=parseFloat(part[1]);
+        // Assuming you want to add the new data to the tableData array
+        this.tableData.push(newData);
        
-    }
-
-    if(part[0]==='c'){
-      // this.topValues.frequency=parseFloat(part[1]);
-      current=parseFloat(part[1]);
-     }
-
-    if(part[0]==='f2'){
-     // this.topValues.frequency=parseFloat(part[1]);
-     frequency=parseFloat(part[1]);
-    }
-    
-    if(this.livedata.length>16){
-      this.livedata.shift()
-    }
-    this.livedata.push({timestamp:new Date().toISOString().slice(0, 19).replace('T', ' '),voltage:voltage.toFixed(6),current:(Math.random() * (10 - 5) + 5).toFixed(6),frequency:frequency.toFixed(6),rocof:(Math.random() * (4) -2).toFixed(6),gps: { lat: 40.7128, lon: -74.0060 }})
-
-
-  });
-
+      }
+    });
   }
-  ngOnInit() {}
+
+
+  ngOnInit(){}
+
+
   getData() {
     this.http.get<any[]>('http://localhost:5000/api/datalat').subscribe(
       (data) => {
@@ -365,7 +48,7 @@ export class DataService implements OnInit {
     
          this.livedata = this.tableData;
 
-         this.livedata.push({timestamp:new Date().toISOString().slice(0, 19).replace('T', ' '),voltage:(Math.random() * (240 - 225) + 225).toFixed(6),current:(Math.random() * (10 - 5) + 5).toFixed(6),frequency:(Math.random() * (52 - 48) + 48).toFixed(6),rocof:(Math.random() * (4) -2).toFixed(6),gps: { lat: 40.7128, lon: -74.0060 }})
+         this.livedata.push()
     
         console.log(data);
       },
@@ -378,8 +61,6 @@ export class DataService implements OnInit {
     );
   }
   
-
-
   getAllData(){
     return this.tableData
   }

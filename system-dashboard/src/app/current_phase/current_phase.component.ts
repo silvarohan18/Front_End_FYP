@@ -65,7 +65,7 @@ yAxis: boolean = true;
 showYAxisLabel: boolean = true;
 showXAxisLabel: boolean = true;
 xAxisLabel: string = 'TIME';
-yAxisLabel: string = 'CURRENT_PHASE';
+yAxisLabel: string = 'CURRENT PHASE';
 timeline: boolean = false;
 autoScale: boolean = true;
 
