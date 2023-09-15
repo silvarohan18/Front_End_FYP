@@ -142,7 +142,7 @@ V1_phse = [
     this.V1_phse = [...this.V1_phse];
     this.V1_phse[0].series.push(newSeries);
 
-    if (this.V1_phse[0].series.length > 200) {
+    if (this.V1_phse[0].series.length > 500) {
       this.V1_phse[0].series.shift();
     }
   }
@@ -157,7 +157,7 @@ V1_phse = [
     this.V2_phse = [...this.V2_phse];
     this.V2_phse[0].series.push(newSeries);
 
-    if (this.V2_phse[0].series.length > 200) {
+    if (this.V2_phse[0].series.length > 500) {
       this.V2_phse[0].series.shift()
 
     }
@@ -171,7 +171,7 @@ V1_phse = [
     this.V3_phse = [...this.V3_phse];
     this.V3_phse[0].series.push(newSeries);
 
-    if (this.V3_phse[0].series.length > 200) {
+    if (this.V3_phse[0].series.length > 500) {
       this.V3_phse[0].series.shift()
     }
   }
