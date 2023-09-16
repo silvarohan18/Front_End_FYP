@@ -1,9 +1,11 @@
 import { Injectable ,OnInit} from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { WebsocketService } from './websocket.service';
+
 @Injectable({
   providedIn: 'root'
 })
+
 export class DataService implements OnInit {
 
   tableData: any[] = [];
