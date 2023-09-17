@@ -17,7 +17,11 @@ export class MaindashComponent implements OnInit{
 
   public isLiveData=true
   tableData:any;
-  topValues:any;
+  topValues = {
+    voltage: 0,
+    frequency: 0,
+    current: 0
+  };
   data: any;
   
   constructor(private _data:DataService, private websocketService:WebsocketService){
@@ -29,30 +33,62 @@ export class MaindashComponent implements OnInit{
     this.websocketService.messages.subscribe((message: string) => {
       const part = message.split(',');
 
+      if (part[0] === 'v1') {
+        //const timeString = parseFloat(part[19]);
+
+        if(this.pmu1Checked){
+          this.topValues.voltage=parseFloat(part[1])
+          this.topValues.frequency=parseFloat(part[7])
+          this.topValues.current=parseFloat(part[13])
+
+
+
+        }else
+        if(this.pmu2Checked){
+          this.topValues.voltage=parseFloat(part[2])
+          this.topValues.frequency=parseFloat(part[8])
+          this.topValues.current=parseFloat(part[14])
+
+
+        }else{
+          this.topValues.voltage=parseFloat(part[3])
+          this.topValues.frequency=parseFloat(part[9])
+          this.topValues.current=parseFloat(part[15])
+
+
+        }
+        
+        //console.log(this.convertUTCTimeToHHMMSSMilli(timeString))
+    }
       
     });
   }
 
   ngOnInit(): void {
    
-    this.tableData=this._data.getLiveData()
+    this.tableData=this._data.getLiveDataP1()
   
   }
 
   onPmuCheckboxChange(checkboxId: string) 
   {
+    console.log(`Checkbox ${checkboxId} changed`);
     switch (checkboxId) 
     {
       case 'pmuCheckbox1':
+        this.pmu1Checked=true
         this.pmu2Checked = false;
         this.pmu3Checked = false;
+        this.tableData=this._data.getLiveDataP1()
       
         break;
       case 'pmuCheckbox2':
+        this.pmu2Checked=true;
         this.pmu1Checked = false;
         this.pmu3Checked = false;
         break;
       case 'pmuCheckbox3':
+        this.pmu3Checked=true;
         this.pmu1Checked = false;
         this.pmu2Checked = false;
         break;

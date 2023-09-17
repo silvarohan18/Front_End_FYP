@@ -10,7 +10,10 @@ export class DataService implements OnInit {
 
   tableData: any[] = [];
   jsonData: any[] = [];
-  livedata:any[] = [];
+  livedatap1:any[] = [];
+  livedatap2:any[] = [];
+  livedatap3:any[] = [];
+
   constructor(private http: HttpClient, private websocketService:WebsocketService) { 
     this.websocketService.messages.subscribe((message: string) => {
       const part = message.split(',');
@@ -27,8 +30,34 @@ export class DataService implements OnInit {
           gps: { lat: 40.7128, lon: -74.0060 },
         };
 
-        // Assuming you want to add the new data to the tableData array
-        this.tableData.push(newData);
+        const newDatap2 = {
+          //phase 2 data
+          timestamp:part[19],
+          voltage: part[2],
+          voltage_phase: part[4],
+          current: part[14],
+          current_phase: part[16],
+          frequency: part[8],
+          rocof: part[11],
+          gps: { lat: 40.7128, lon: -74.0060 },
+        };
+
+        const newDatap3 = {
+          //phase 3 data
+          timestamp:part[19],
+          voltage: part[3],
+          voltage_phase: part[4],
+          current: part[15],
+          current_phase: part[16],
+          frequency: part[9],
+          rocof: part[12],
+          gps: { lat: 40.7128, lon: -74.0060 },
+        };
+
+        // add the new data to the livedata array
+        this.livedatap1.push(newData);
+        this.livedatap2.push(newDatap2);
+        this.livedatap3.push(newDatap3);
        
       }
     });
@@ -39,7 +68,7 @@ export class DataService implements OnInit {
 
 
   getData() {
-    this.http.get<any[]>('http://localhost:5000/api/datalat').subscribe(
+    /*this.http.get<any[]>('http://localhost:5000/api/datalat').subscribe(
       (data) => {
         for (const item of data) {
           
@@ -60,7 +89,7 @@ export class DataService implements OnInit {
         console.error('Status Text:', error.statusText);
         console.error('Response:', error.error);
       }
-    );
+    );*/
   }
   
   getAllData(){
@@ -68,8 +97,9 @@ export class DataService implements OnInit {
   }
 
   
-  getLiveData(){
-    return this.livedata
+  getLiveDataP1(){
+    return this.livedatap1
 
   }
+
 }
