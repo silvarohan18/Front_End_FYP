@@ -15,6 +15,7 @@ export class DataService implements OnInit {
   livedatap3:any[] = [];
 
   constructor(private http: HttpClient, private websocketService:WebsocketService) {
+  constructor(private http: HttpClient, private websocketService:WebsocketService) {
     this.websocketService.messages.subscribe((message: string) => {
       const part = message.split(',');
       if (part[0] === 'v1') {
@@ -59,6 +60,7 @@ export class DataService implements OnInit {
         this.livedatap2.push(newDatap2);
         this.livedatap3.push(newDatap3);
 
+
       }
     });
   }
@@ -72,14 +74,17 @@ export class DataService implements OnInit {
       (data) => {
         for (const item of data) {
 
+
           this.livedata.push(item)
           // Here, 'item' represents each JSON object in the array
           console.log(item); // You can access properties of 'item' as needed
         }
 
+
          this.livedata = this.tableData;
 
          this.livedata.push()
+
 
         console.log(data);
       },
@@ -92,15 +97,14 @@ export class DataService implements OnInit {
     );*/
   }
 
+
   getAllData(){
     return this.tableData
   }
 
-
   getLiveDataP1(){
     return this.livedatap1
   }
-
   getLiveDataP2(){
     return this.livedatap2
   }
