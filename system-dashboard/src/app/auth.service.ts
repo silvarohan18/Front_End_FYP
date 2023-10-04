@@ -12,8 +12,6 @@ export class AuthService {
     return this.auth;
   }
 
-  //Dummy users
-  //array of users contain email and password
   users=[
     {
       email:'eg183466',
