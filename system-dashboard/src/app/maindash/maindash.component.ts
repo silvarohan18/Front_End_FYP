@@ -86,11 +86,13 @@ export class MaindashComponent implements OnInit{
         this.pmu2Checked=true;
         this.pmu1Checked = false;
         this.pmu3Checked = false;
+        this.tableData=this._data.getLiveDataP2()
         break;
       case 'pmuCheckbox3':
         this.pmu3Checked=true;
         this.pmu1Checked = false;
         this.pmu2Checked = false;
+        this.tableData=this._data.getLiveDataP3()
         break;
       case 'pmuCheckbox4':
         this.pmu1Checked = false;
@@ -118,7 +120,6 @@ export class MaindashComponent implements OnInit{
     console.log(this.convertUTCTimeToHHMMSS)
   }
 
- 
     
   setTime(time:string):Date
   {

@@ -14,7 +14,7 @@ export class DataService implements OnInit {
   livedatap2:any[] = [];
   livedatap3:any[] = [];
 
-  constructor(private http: HttpClient, private websocketService:WebsocketService) { 
+  constructor(private http: HttpClient, private websocketService:WebsocketService) {
     this.websocketService.messages.subscribe((message: string) => {
       const part = message.split(',');
       if (part[0] === 'v1') {
@@ -58,7 +58,7 @@ export class DataService implements OnInit {
         this.livedatap1.push(newData);
         this.livedatap2.push(newDatap2);
         this.livedatap3.push(newDatap3);
-       
+
       }
     });
   }
@@ -71,16 +71,16 @@ export class DataService implements OnInit {
     /*this.http.get<any[]>('http://localhost:5000/api/datalat').subscribe(
       (data) => {
         for (const item of data) {
-          
+
           this.livedata.push(item)
           // Here, 'item' represents each JSON object in the array
           console.log(item); // You can access properties of 'item' as needed
         }
-    
+
          this.livedata = this.tableData;
 
          this.livedata.push()
-    
+
         console.log(data);
       },
       (error) => {
@@ -91,15 +91,21 @@ export class DataService implements OnInit {
       }
     );*/
   }
-  
+
   getAllData(){
     return this.tableData
   }
 
-  
+
   getLiveDataP1(){
     return this.livedatap1
-
   }
 
+  getLiveDataP2(){
+    return this.livedatap2
+  }
+
+  getLiveDataP3(){
+    return this.livedatap3
+  }
 }
