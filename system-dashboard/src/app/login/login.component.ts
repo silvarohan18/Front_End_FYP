@@ -10,7 +10,7 @@ import { AuthService } from '../auth.service';
 export class LoginComponent implements OnInit {
 
   loginUserdata={"email":"","password":""}
-
+  
   constructor(private _router:Router,private _auth:AuthService){}
  
   ngOnInit(): void {
@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
   }
 
   loginUser(){
-    if(this._auth.loginUser()){
+    if(this._auth.loginUser(this.loginUserdata.email,this.loginUserdata.password)){
      this._router.navigate(['/home/main'])
     }else{
       alert('Login Failed')

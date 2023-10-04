@@ -34,9 +34,9 @@ export class DataService implements OnInit {
           //phase 2 data
           timestamp:part[19],
           voltage: part[2],
-          voltage_phase: part[5],
+          voltage_phase: part[4],
           current: part[14],
-          current_phase: part[17],
+          current_phase: part[16],
           frequency: part[8],
           rocof: part[11],
           gps: { lat: 40.7128, lon: -74.0060 },
@@ -46,9 +46,9 @@ export class DataService implements OnInit {
           //phase 3 data
           timestamp:part[19],
           voltage: part[3],
-          voltage_phase: part[6],
+          voltage_phase: part[4],
           current: part[15],
-          current_phase: part[18],
+          current_phase: part[16],
           frequency: part[9],
           rocof: part[12],
           gps: { lat: 40.7128, lon: -74.0060 },

@@ -41,8 +41,10 @@ closeLoginModal() {
     this.showLoginModal = false;
 }
 
+loginUserdata={"email":"","password":""}
+
 onStartLog(){
-  if(this._auth.loginUser()){
+  if(this._auth.loginUser(this.loginUserdata.email,this.loginUserdata.password)){
     this._router.navigate(['/home/main'])
    }else{
      alert('Login Failed')

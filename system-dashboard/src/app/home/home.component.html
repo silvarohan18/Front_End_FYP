@@ -141,22 +141,22 @@
 
 
 <div class="modal" *ngIf="showLoginModal">
-<div class="modal-content">
-    <span class="close-btn" (click)="closeLoginModal()">&times;</span>
-    <h2>Login</h2>
-    <form>
-        <div class="input-group">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username">
-        </div>
-        <div class="input-group">
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password">
-        </div>
-        <button type="submit" class="submit-btn" (click)="onStartLog()">Login</button>
-    </form>
-</div>
-</div>
+  <div class="modal-content">
+      <span class="close-btn" (click)="closeLoginModal()">&times;</span>
+      <h2>Login</h2>
+      <form>
+          <div class="input-group">
+              <label for="username">Username:</label>
+              <input [(ngModel)]="loginUserdata.email" type="text" id="username" name="username">
+          </div>
+          <div class="input-group">
+              <label for="password">Password:</label>
+              <input [(ngModel)]="loginUserdata.password" type="password" id="password" name="password">
+          </div>
+          <button type="submit" class="submit-btn" (click)="onStartLog()">Login</button>
+      </form>
+  </div>
+  </div>
 
 
 <div class="footer">

@@ -161,4 +161,3 @@ export class MaindashComponent implements OnInit{
     return `${hours}:${minutes}:${seconds}`;
   }
 }
-
