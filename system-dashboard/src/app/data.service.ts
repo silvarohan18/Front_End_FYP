@@ -14,7 +14,7 @@ export class DataService implements OnInit {
   livedatap2:any[] = [];
   livedatap3:any[] = [];
 
-  constructor(private http: HttpClient, private websocketService:WebsocketService) {
+
   constructor(private http: HttpClient, private websocketService:WebsocketService) {
     this.websocketService.messages.subscribe((message: string) => {
       const part = message.split(',');
