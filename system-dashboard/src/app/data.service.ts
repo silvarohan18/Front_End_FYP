@@ -56,9 +56,9 @@ export class DataService implements OnInit {
         };
 
         // add the new data to the livedata array
-        this.livedatap1.push(newData);
-        this.livedatap2.push(newDatap2);
-        this.livedatap3.push(newDatap3);
+        this.livedatap1.unshift(newData);
+        this.livedatap2.unshift(newDatap2);
+        this.livedatap3.unshift(newDatap3);
 
 
       }
