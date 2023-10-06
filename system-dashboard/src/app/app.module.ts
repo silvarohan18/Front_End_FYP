@@ -9,7 +9,6 @@ import { MaindashComponent } from './maindash/maindash.component';
 import { FrequencyComponent } from './frequency/frequency.component';
 import { RocofComponent } from './rocof/rocof.component';
 import { Voltage_phaseComponent } from './voltage_phase/voltage_phase.component';
-import { Current_phaseComponent } from './current_phase/current_phase.component';
 import { AuthenticatedComponent } from './authenticated/authenticated.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
@@ -28,7 +27,6 @@ import { HomeComponent } from './home/home.component';
     VoltageComponent,
     Voltage_phaseComponent,
     CurrentComponent,
-    Current_phaseComponent,
     MaindashComponent,
     FrequencyComponent,
     RocofComponent,
