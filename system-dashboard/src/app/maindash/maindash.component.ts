@@ -117,12 +117,11 @@ export class MaindashComponent implements OnInit{
     console.log(this.convertUTCTimeToHHMMSS)
   }
 
- 
-    
-  setTime(time:string):Date
-  {
+   
+  setTime(time:string):Date{
     const[h,m,sANDm] = time.split(":");
     const[s,ms] = sANDm.split(".");
+
     const newtime =  new Date();
 
     newtime.setHours(Number(h));
@@ -133,30 +132,31 @@ export class MaindashComponent implements OnInit{
     return newtime;
   }
 
-   formatTime(date: Date): string
-   {
+   // Add this function to format the time in HH:mm
+   formatTime(date: Date): string {
     const hours = this.padZero(date.getHours());
     const minutes = this.padZero(date.getMinutes());
     return `${hours}:${minutes}`;
   }
 
-  padZero(num: number): string
-  {
+  // Add this function to pad single-digit numbers with leading zeros
+  padZero(num: number): string {
     return num < 10 ? `0${num}` : `${num}`;
   }
 
   convertUTCTimeToHHMMSSMilli(utcTimeInMilliseconds: number): string {
-    const date = new Date(utcTimeInMilliseconds * 1000);
-    const seconds = String(date.getUTCSeconds()).padStart(2, '0');
+    const date = new Date(utcTimeInMilliseconds * 1000); // Use milliseconds directly
     const milliseconds = String(date.getUTCMilliseconds()).padStart(3, '0');
     return `${milliseconds}`;
   }
 
+
   convertUTCTimeToHHMMSS(utcTimeInSeconds: number): string {
-    const date = new Date(utcTimeInSeconds * 1000);
+    const date = new Date(utcTimeInSeconds * 1000); // Convert seconds to milliseconds
     const hours = String(date.getUTCHours()).padStart(2, '0');
     const minutes = String(date.getUTCMinutes()).padStart(2, '0');
     const seconds = String(date.getUTCSeconds()).padStart(2, '0');
+
     return `${hours}:${minutes}:${seconds}`;
   }
 }

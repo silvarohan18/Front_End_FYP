@@ -21,7 +21,7 @@ export class DataService implements OnInit {
       if (part[0] === 'v1') {
         const newData = {
           //phase 1 data
-          timestamp:part[19],
+          timestamp:this.convertUTCTimeToHHMMSS(parseFloat(part[19])),
           voltage: part[1],
           voltage_phase: part[4],
           current: part[13],
@@ -108,5 +108,14 @@ export class DataService implements OnInit {
 
   getLiveDataP3(){
     return this.livedatap3
+  }
+
+  convertUTCTimeToHHMMSS(utcTimeInSeconds: number): string {
+    const date = new Date(utcTimeInSeconds * 1000); // Convert seconds to milliseconds
+    const hours = String(date.getUTCHours()).padStart(2, '0');
+    const minutes = String(date.getUTCMinutes()).padStart(2, '0');
+    const seconds = String(date.getUTCSeconds()).padStart(2, '0');
+
+    return `${hours}:${minutes}:${seconds}`;
   }
 }
