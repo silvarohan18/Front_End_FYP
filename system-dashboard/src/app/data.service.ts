@@ -32,7 +32,7 @@ export class DataService implements OnInit {
 
         const newDatap2 = {
           //phase 2 data
-          timestamp:part[19],
+          timestamp:this.convertUTCTimeToHHMMSS(parseFloat(part[19])),
           voltage: part[2],
           voltage_phase: part[4],
           current: part[14],
@@ -43,7 +43,7 @@ export class DataService implements OnInit {
 
         const newDatap3 = {
           //phase 3 data
-          timestamp:part[19],
+          timestamp:this.convertUTCTimeToHHMMSS(parseFloat(part[19])),
           voltage: part[3],
           voltage_phase: part[4],
           current: part[15],
@@ -115,7 +115,7 @@ export class DataService implements OnInit {
     const hours = String(date.getUTCHours()).padStart(2, '0');
     const minutes = String(date.getUTCMinutes()).padStart(2, '0');
     const seconds = String(date.getUTCSeconds()).padStart(2, '0');
-
-    return `${hours}:${minutes}:${seconds}`;
+    const milliseconds = String(date.getUTCMilliseconds()).padStart(3, '0');
+    return `${hours}:${minutes}:${seconds}:${milliseconds}`;
   }
 }
