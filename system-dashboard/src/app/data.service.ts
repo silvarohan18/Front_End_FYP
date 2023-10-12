@@ -27,7 +27,7 @@ export class DataService implements OnInit {
           current: part[13],
           frequency: part[7],
           rocof: part[10],
-          gps: { lat: 40.7128, lon: -74.0060 },
+          gps: { lat:6.078155 , lon: 80.192199 },
         };
 
         const newDatap2 = {
@@ -38,7 +38,7 @@ export class DataService implements OnInit {
           current: part[14],
           frequency: part[8],
           rocof: part[11],
-          gps: { lat: 40.7128, lon: -74.0060 },
+          gps: { at:6.078155 , lon: 80.192199  },
         };
 
         const newDatap3 = {
@@ -49,7 +49,7 @@ export class DataService implements OnInit {
           current: part[15],
           frequency: part[9],
           rocof: part[12],
-          gps: { lat: 40.7128, lon: -74.0060 },
+          gps: { lat:6.078155 , lon: 80.192199  },
         };
 
         // add the new data to the livedata array
