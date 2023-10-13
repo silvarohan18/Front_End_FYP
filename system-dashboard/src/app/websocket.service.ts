@@ -13,7 +13,7 @@ export class WebsocketService {
   }
 
   private connect() {
-    const uri = 'ws://34.125.45.1:4000';
+    const uri = 'ws://34.125.78.239:4000';
     this.socket = new WebSocket(uri);
 
     this.socket.onopen = (event) => {
